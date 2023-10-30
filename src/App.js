@@ -1,9 +1,15 @@
-import FileUpload from './components/FileUpload/FileUpload';
-import './App.css';
+import React from 'react';
+import Navbar from "./components/Navbar/Navbar";
+import Intro from "./components/Introduction/Intro"
+import Upload from "./components/Upload/Upload"
 
 function App() {
   return (
-    <FileUpload />
+    <div className="App">
+      <Navbar/>
+      <Intro/>
+      <Upload/>
+    </div>
   );
 }
 

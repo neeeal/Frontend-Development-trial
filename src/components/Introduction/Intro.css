@@ -1,0 +1,99 @@
+#intro {
+    height: calc(100vh - 2rem);
+    width: 100vw;
+    max-width: 75rem;
+    margin:  auto;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../../../public/fonts/Montserrat-Bold.ttf);
+}
+
+.introContent {
+    height: 100vh;
+    width: 100vw;
+    margin-top: 0 auto;
+    padding: 2rem;
+    font-size: 3rem;
+    font-family: Montserrat-Bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -3rem;
+}
+
+.introLine1 {
+    color:green;
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(../../../public/fonts/Montserrat-Light.ttf);
+}
+
+.introParagraph {
+    font-size: medium;
+    font-family: Montserrat-Light;
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../../../public/fonts/Montserrat-Regular.ttf);
+}
+
+.introBtn {
+    background: green;
+    margin: 1rem 0;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-family: Montserrat-Regular;
+}
+
+
+.arrowContainer {
+    margin-right: 0.5rem; 
+  }
+
+.arrowBtn {
+    object-fit: cover;
+    width: 1.2rem;
+    height: auto;
+    margin-top: 5px; /* Adjust this value to fine-tune the vertical alignment */
+}
+
+
+.parallax {
+    position: absolute;
+    height: 100vh; /* Set the height to the viewport height */
+    width: 100%;  /* Width covers the entire viewport */
+    pointer-events: none; /* Hide overflow content */
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+.parallax img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+
+}
+
+  .bgOne, .bgTwo, .bgThree {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    pointer-events: none;
+  }
+  
