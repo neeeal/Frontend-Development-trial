@@ -1,26 +1,26 @@
 .navbar {
-    height: 5rem;
+    height: 0.1rem;
     width: 100vw;
     margin: 0 auto;
-    padding: 1rem 0;
+    padding: 2rem 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    
-
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    /* filter: drop-shadow(0 -10px 20px rgb(170,170,170)) */
 }
 
 .logo {
     object-fit: contain;
-    height: 10rem;
-    width: 15rem;
+    height: 5rem;
+    width: 8.5rem;
     margin: 1rem;
 }
 
@@ -33,7 +33,7 @@
     margin: 4rem;
     cursor: pointer;
     margin-left: auto;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-family: Montserrat-Bold;
     position: relative;
     text-decoration: none;
@@ -44,7 +44,7 @@
     content: "";
     position: absolute;
     bottom: -10px;
-    height: 5px;
+    height: 3px;
     width: 0;
     background: green;
     border-radius: 50px;

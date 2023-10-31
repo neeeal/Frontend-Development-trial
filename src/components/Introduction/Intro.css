@@ -15,13 +15,14 @@
     height: 100vh;
     width: 100vw;
     margin-top: 0 auto;
-    padding: 2rem;
+    padding: 0.5rem;
     font-size: 3rem;
     font-family: Montserrat-Bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -3rem;
+    margin-top: -6rem;
+    color: #000;
 }
 
 .introLine1 {
@@ -64,15 +65,15 @@
     object-fit: cover;
     width: 1.2rem;
     height: auto;
-    margin-top: 5px; /* Adjust this value to fine-tune the vertical alignment */
+    margin-top: 5px; 
 }
 
 
 .parallax {
     position: absolute;
-    height: 100vh; /* Set the height to the viewport height */
-    width: 100%;  /* Width covers the entire viewport */
-    pointer-events: none; /* Hide overflow content */
+    height: 100vh; 
+    width: 100vw;  
+    pointer-events: none; 
     height: 100vh;
     top: 0;
     left: 0;
@@ -96,4 +97,9 @@
     object-fit: cover; 
     pointer-events: none;
   }
-  
+
+  @media screen and (max-width: 360px) {
+    .parallax img {
+        right: -20vw;
+    }
+  }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Intro.css';
 import { Link } from 'react-scroll';
 import arrow from '../../assets/arrow.png';
@@ -7,24 +7,24 @@ import bg2 from '../../assets/bg2.png';
 import bg3 from '../../assets/bg3.png';
 
 function Intro() {
-  useEffect(() => {
-    const handleScroll = () => {
-      let value = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     let value = window.scrollY;
 
-      // Update the position of the background images
-    document.querySelector('.bgThree').style.left = value * 1.5 + 'px';
-    document.querySelector('.bgOne').style.top = value * -0.5 + 'px';
-    document.querySelector('.bgTwo').style.left = value * -1.5 + 'px';
-    };
+  //     // Update the position of the background images
+  //   document.querySelector('.bgThree').style.left = value * 1.5 + 'px';
+  //   document.querySelector('.bgOne').style.top = value * -0.5 + 'px';
+  //   document.querySelector('.bgTwo').style.left = value * -1.5 + 'px';
+  //   };
 
-    // Add the scroll event listener when the component mounts
-    window.addEventListener('scroll', handleScroll);
+  //   // Add the scroll event listener when the component mounts
+  //   window.addEventListener('scroll', handleScroll);
 
-    // Remove the scroll event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   // Remove the scroll event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <section id="intro">
