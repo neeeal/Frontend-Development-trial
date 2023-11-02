@@ -29,6 +29,10 @@
     color:green;
 }
 
+.introLine2 {
+    color: black;
+}
+
 @font-face {
     font-family: Montserrat-Light;
     src: url(../../../public/fonts/Montserrat-Light.ttf);

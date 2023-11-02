@@ -1,0 +1,160 @@
+@font-face {
+    font-family: Montserrat-Black;
+    src: url(../../../public/fonts/Montserrat-Black.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-BoldItalic;
+    src: url(../../../public/fonts/Montserrat-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../../../public/fonts/Montserrat-Regular.ttf);
+}
+
+.tuts {
+    height: 100vh /*calc(100vh - 2rem)*/;
+    width: 100vw;
+    margin:  auto;
+    overflow: hidden;
+    text-align: justify;
+    background-size: cover; /* Adjust as needed */
+    background-position: center center; /* Adjust as needed */
+    position: relative;
+    /* background-color: antiquewhite; */
+}
+
+.tutsContent{
+    display: flex;
+}
+
+.tutsTitle {
+    color: green;
+    font-family: Montserrat-Black;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 3.5rem;
+    display: flex;
+    padding-top: 1.75rem;    
+    margin-bottom: 1.5rem;
+}
+
+.allSteps {
+    max-width: 45rem;
+    width: 50vw;
+    margin: 1.5rem;
+    margin-left: 7rem;
+    text-align: left;
+}
+
+
+.step {
+    color: rgba(0, 0, 0, 0.5); /* Set opacity to 50% */
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)); /* Glass morph effect with linear gradient */
+    border: 1px solid #cccccc; /* Add a border */
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); /* Add drop shadow */
+    backdrop-filter: blur(5px); /* Apply a backdrop filter for frosted glass effect */
+}
+
+
+.stepDivContent {
+    align-content: center;
+    justify-content: flex;
+}
+
+.stepOneTitle {
+    color: black;
+    font-family: Montserrat-Regular;
+    font-size: 1.5rem;
+}
+
+.stepOneClick {
+    color: green;
+    font-family: Montserrat-BoldItalic;
+    font-size: 2rem;
+}
+
+.stepOneCaption {
+    font-family: Montserrat-Regular;
+    font-size: 1rem;
+    color: black;
+}
+
+
+.stepTwoTitle {
+    color: black;
+    font-family: Montserrat-Regular;
+    font-size: 1.5rem;
+}
+
+.stepTwoSelect {
+    color: green;
+    font-family: Montserrat-BoldItalic;
+    font-size: 2rem;
+}
+
+.stepTwoCaption {
+    font-family: Montserrat-Regular;
+    font-size: 1rem;
+    color: black;
+}
+
+
+.stepThreeTitle {
+    color: black;
+    font-family: Montserrat-Regular;
+    font-size: 1.5rem;
+}
+
+.stepThreeClick {
+    color: green;
+    font-family: Montserrat-BoldItalic;
+    font-size: 2rem;
+}
+
+.stepThreeCaption {
+    font-family: Montserrat-Regular;
+    color: black;
+    font-size: 1rem;
+}
+
+.stepIcon {
+    object-fit: contain;
+    height: 7rem;
+    width: 8.5rem;
+    margin-right: 2rem;
+}
+
+.imgContainer {
+    max-width: 45rem;
+    width: 50%; /* Set to 50% to share the space with allSteps */
+    margin: 1.5rem;
+    display: flex; /* Use flexbox to center the content */
+    align-items: center;
+    justify-content: center;
+}
+
+.tutsBG {
+    position: absolute;
+    height: 100%; /* Set height and width to 100% to cover the entire tuts section */
+    width: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* .imgPlaceholder {
+    position: absolute;
+    top: -4rem;
+    right: 0;
+    z-index: -1;
+    object-fit: contain;
+} */
