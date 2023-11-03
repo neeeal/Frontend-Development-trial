@@ -51,16 +51,16 @@
 
 
 .step {
-    color: rgba(0, 0, 0, 0.5); /* Set opacity to 50% */
+    color: rgba(0, 0, 0, 0.5);
     margin: 1rem;
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)); /* Glass morph effect with linear gradient */
-    border: 1px solid #cccccc; /* Add a border */
+    border: 1px solid #cccccc; 
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); /* Add drop shadow */
-    backdrop-filter: blur(5px); /* Apply a backdrop filter for frosted glass effect */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
+    backdrop-filter: blur(5px); 
 }
 
 
@@ -132,29 +132,33 @@
     margin-right: 2rem;
 }
 
-.imgContainer {
+/* .imgContainer {
     max-width: 45rem;
-    width: 50%; /* Set to 50% to share the space with allSteps */
+    width: 50%;
     margin: 1.5rem;
-    display: flex; /* Use flexbox to center the content */
+    display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .tutsBG {
     position: absolute;
-    height: 100%; /* Set height and width to 100% to cover the entire tuts section */
+    height: 100%; 
     width: 100%;
     pointer-events: none;
-    top: 0;
+    bottom: 0;
     left: 0;
     z-index: -1;
 }
 
-/* .imgPlaceholder {
-    position: absolute;
-    top: -4rem;
-    right: 0;
-    z-index: -1;
-    object-fit: contain;
-} */
+.boxInside {
+    height: 65rem;
+    width: 65rem;
+    background-color: #F9F9F9;
+    border: 1px solid #cccccc; 
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
+    margin: 10rem auto;
+
+}
