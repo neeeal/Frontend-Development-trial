@@ -1,7 +1,7 @@
-import React from 'react'
-import './Navbar.css'
-import logo from '../../assets/logopngnew.png'
-import { Link } from 'react-scroll'
+import React from 'react';
+import './Navbar.css';
+import logo from '../../assets/logopngnew.png';
+import { Link } from 'react-scroll';
 
 function Navbar() {
   return (
@@ -13,8 +13,9 @@ function Navbar() {
             <Link className='menuItem'>Scan</Link>
             <Link className='menuItem'>History</Link>
             <Link className='menuItem'>Contact</Link>
-            <Link className='menuItem'>Signup</Link>
+            <Link className='menuItem'>Login</Link>
         </div>
+
     </nav>
   )
 }
