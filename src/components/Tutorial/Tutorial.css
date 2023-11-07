@@ -55,7 +55,7 @@
     margin: 1rem;
     display: flex;
     align-items: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)); /* Glass morph effect with linear gradient */
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
     border: 1px solid #cccccc; 
     padding: 1rem;
     border-radius: 10px;
@@ -132,14 +132,14 @@
     margin-right: 2rem;
 }
 
-/* .imgContainer {
+.imgContainer {
     max-width: 45rem;
-    width: 50%;
+    width: 50%; 
     margin: 1.5rem;
-    display: flex;
+    display: flex; 
     align-items: center;
     justify-content: center;
-} */
+}
 
 .tutsBG {
     position: absolute;
@@ -149,9 +149,10 @@
     bottom: 0;
     left: 0;
     z-index: -1;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
 }
 
-.boxInside {
+/* .boxInside {
     height: 65rem;
     width: 65rem;
     background-color: #F9F9F9;
@@ -161,4 +162,4 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
     margin: 10rem auto;
 
-}
+} */

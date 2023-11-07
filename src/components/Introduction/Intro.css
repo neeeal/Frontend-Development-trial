@@ -1,10 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
-
-.intro {
+#intro {
     height: calc(100vh - 2rem);
     width: 100vw;
-    max-width: 75rem;
+    max-width: 90rem;
     margin:  auto;
     overflow: hidden;
 }
@@ -109,3 +106,9 @@
     right: 80px;
     bottom: 85px;
 }
+
+@media screen and (max-width: 360px) {
+    .parallax img {
+        right: -20vw;
+    }
+  }
