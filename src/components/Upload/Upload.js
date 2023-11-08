@@ -28,6 +28,7 @@ export default function Upload() {
   };
 
   const handleClassify = () => {
+    // api
     setClassification("Some classification result");
     setRecommendation("Some recommendation result");
     setFireRating(3);
@@ -40,12 +41,11 @@ export default function Upload() {
   }, []);
 
   return (
-    <section className='scan'>
+    <section className='scan' id='scan-section'>
       <section>
         <img src={BG} alt='BG' className='BG' />
       </section>
       <span className='scanTitle'>SCAN</span>
-
       <main className="scanContainer">
         <div className="uploadSection">
           <div className="image-form" onClick={() => document.querySelector(".input-field").click()}>

@@ -14,7 +14,6 @@
         width: 100vw;
         margin:  auto;
         overflow: hidden;
-        text-align: justify;
         background-size: cover; 
         background-position: center center; 
         position: relative;
@@ -23,13 +22,15 @@
     .scanTitle {
         color: green;
         font-family: Montserrat-Black;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        align-items: left;
+        justify-content: left;
+        text-align: left;
         font-size: 3.5rem;
         display: flex;
-        padding-top: 1.75rem;    
-        margin-bottom: 1.5rem;
+        /* padding-top: 1.75rem;     */
+        /* margin-bottom: 1.5rem; */
+        margin-left: 4rem;
+        margin-top: 0.8rem;
     }
 
     .BG {
@@ -49,6 +50,7 @@
         max-width: 90rem;
         margin: 0 auto;
         height: 35rem;
+        
     }
     
     .uploadSection {

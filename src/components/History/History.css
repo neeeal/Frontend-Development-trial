@@ -1,0 +1,122 @@
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url(../../../public/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../../../public/fonts/Montserrat-Regular.ttf);
+}
+
+/* Resetting default browser styles */
+body {
+    margin: 0;
+    background-color: #F9F9F9;
+  }
+  
+  /* Container for the content */
+  .container {
+    height: 100vh /*calc(100vh - 2rem)*/;
+        width: 100vw;
+        margin:  auto;
+        overflow: hidden;
+        background-size: cover; 
+        background-position: center center; 
+        position: relative;
+  }
+
+  .BG {
+    position: absolute;
+    height: 100%; 
+    width: 100%;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
+}
+  
+  .history-title {
+    color: green;
+        font-family: Montserrat-Black;
+        align-items: left;
+        justify-content: left;
+        text-align: left;
+        font-size: 3.5rem;
+        display: flex;
+        /* padding-top: 1.75rem;     */
+        margin-bottom: 0.5rem;
+        margin-left: 4rem;
+  }
+  
+  /* Card container */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+    font-family: Montserrat-Regular;
+    font-size: 0.80rem;
+  }
+  
+  .card {
+    flex-basis: calc(25% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .image-container img {
+    width: 100%;
+    display: block;
+  }
+  
+  .results-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 9.8rem;
+    height: 2.5rem;
+    margin-left: 10rem;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .results-btn:hover {
+    background-color: darkgreen; 
+  }
+  
+ 
+  .scan-title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px 10px;
+    margin: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgb(255, 255, 255)afa; 
+    font-size: 1.5em;
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      flex-basis: 100%;
+    }
+  }
+  

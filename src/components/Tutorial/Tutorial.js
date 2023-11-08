@@ -8,7 +8,7 @@ import tutsBG from '../../assets/background.png'
 
 function Tutorial() {
   return (
-    <section className='tuts'>
+    <section className='tuts' id='about-section'>
         <section>
             <img src={tutsBG} alt='tutsBG' className='tutsBG'/>
         </section>
