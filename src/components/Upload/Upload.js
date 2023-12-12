@@ -10,32 +10,78 @@ export default function Upload() {
   const [classification, setClassification] = useState("Not yet classified");
   const [recommendation, setRecommendation] = useState("No recommendation yet");
   const [fireRating, setFireRating] = useState(0);
+  const [results, setResults] = useState({});
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFileName(file.name);
       setImage(URL.createObjectURL(file));
+      console.log(image)
     }
   };
-
+  useEffect(() => {
+      console.log(image)
+    }, [image]);
   const handleRemove = () => {
     setFileName("No selected file");
     setImage(null);
     setClassification("Not yet classified");
     setRecommendation("No recommendation yet");
+    setResults({});
     setFireRating(0);
   };
+  const fetchClassification = async (imageUri) => {
+    try {
+      const base64Image = await convertBlobToBase64(imageUri)
+      console.log("LOADING LOADING LOADING...")
+      // console.log(base64Image)
+      const response = await fetch('https://softies-backend-production.up.railway.app/api/recommendation/skan', { 
+      method: 'POST',
+      body: JSON.stringify({
+          "image":base64Image,
+        }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+      const result = await response.json();
+      // result assign to state
+      console.log(result)
+      setClassification({stress_name : result.stress_name, stress_desc: result.description});
+      setRecommendation(result.recommendations);
+      setFireRating(result.stress_level);
+      setResults(result)
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
-  const handleClassify = () => {
-    // api
-    setClassification("Some classification result");
-    setRecommendation("Some recommendation result");
-    setFireRating(3);
+  
+  const convertBlobToBase64 = async (blobUrl) => {
+    // Fetch the Blob data from the URL
+    const response = await fetch(blobUrl);
+    const blob = await response.blob();
+  
+    // Convert the Blob to base64
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
+  
+  
+//       }, [selectedImage]);
+
+  const handleClassify = async() => {
+    await fetchClassification(image)
+
   };
 
   useEffect(() => {
-    setClassification("Not yet classified");
+    // setClassification({stress_name: "Not yet classified"});
     setRecommendation("No recommendation yet");
     setFireRating(0);
   }, []);
@@ -70,7 +116,8 @@ export default function Upload() {
           <span className='headerStyle'>Classification</span><br />
           <div className="fire-icon-container">
             <span className='paragraphStyle'>
-              {classification}
+              <b>{classification.stress_name}</b> <br/>
+              {classification.stress_desc}
             </span>
             <section className='fireCon'>
               {Array.from({ length: 5 }).map((_, index) => (
@@ -85,7 +132,12 @@ export default function Upload() {
           </div>
           <br /><br />
           <span className='headerStyle'>Recommendation</span><br />
-          <span className='paragraphStyle'>{recommendation}</span><br />
+          <span className='paragraphStyle'>{recommendation}</span><br /><br/>
+
+          <span className='headerStyle'>References</span><br />
+          <span className='paragraphStyle'>{results.description_src}</span><br /><br/>
+          <span className='paragraphStyle'>{results.recommendation_src}</span><br />
+          
         </div>
       </main>
     </section>
