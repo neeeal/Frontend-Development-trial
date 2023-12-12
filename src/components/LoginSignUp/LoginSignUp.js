@@ -8,24 +8,53 @@ const LoginSignUp = () => {
     const [addclass, setaddclass] = useState("");
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [contact, setContact] = useState('');
+
     const navigate = useNavigate();
     const { login, isAuthenticated } = useAuth();
+
     useEffect(() => {
-      console.log(isAuthenticated,"fd")
       if (isAuthenticated===true){
         navigate('/');
       }
-    
     });
-    const handleLoginClick = async (event) => {
-        event.preventDefault(); 
 
-        await login(email, password, event)
-        
-        if (await isAuthenticated===true){
-          navigate('/');
-        }
-      };
+    const handleLoginClick = async (event) => {
+      event.preventDefault(); 
+      await login(email, password, event)
+      if (await isAuthenticated===true){
+        navigate('/');
+      }
+    };
+
+    const handleSignUp = async (event) => {
+      event.preventDefault(); 
+      try {
+        const response = await fetch('https://softies-backend-production.up.railway.app/api/users/signup', {
+          method: 'POST',
+          body: JSON.stringify({
+            email:email,
+            password: password,
+            username:username,
+            first_name: firstName,
+            last_name: lastName,
+            contact: contact
+          }),
+          headers: {
+          'Content-Type': 'application/json',
+          },
+      });
+        const result = await response.json();
+        setaddclass("")
+      //   showToast(result.msg)
+      //  console.log("error")
+      } catch (error) {
+        console.log(error)
+      }
+    };
 
     return (
       <div className={`container ${addclass}`} id="loginSignup">
@@ -36,12 +65,13 @@ const LoginSignUp = () => {
             <div className = "paragraph2">
                 Enter your complete details to register
             </div>
-            <input type="fName" placeholder="First Name" />
-            <input type="lName" placeholder="Last Name" />
-            <input type="contact" placeholder="Contact" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button type="submit">SIGN UP</button>
+            <input type="fName" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
+            <input type="lName" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
+            <input type="contact" placeholder="Contact" onChange={(e) => setContact(e.target.value)}/>
+            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+            <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+            <button onClick={handleSignUp}>SIGN UP</button>
           </form>
         </div>
 
