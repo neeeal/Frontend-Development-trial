@@ -1,11 +1,35 @@
-import React , {useState} from "react";
+import React , {useState,useEffect} from "react";
 import './LoginSignUp.css'; 
 import signIn from '../../assets/signIn.png';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginSignUp = () => {
     const [addclass, setaddclass] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const { login, isAuthenticated } = useAuth();
+    useEffect(() => {
+      console.log(isAuthenticated,"fd")
+      if (isAuthenticated===true){
+        navigate('/');
+      }
+    
+    });
+    const handleLoginClick = async (event) => {
+        event.preventDefault(); 
+
+        await login(email, password, event)
+        
+        if (await isAuthenticated===true){
+          navigate('/');
+        }
+      };
+
     return (
-      <div className={`container ${addclass}`} id="container">
+      <div className={`container ${addclass}`} id="loginSignup">
+        
         <div className="form-container  sign-up-container">
           <form>
             <h1>Create Account</h1>
@@ -22,13 +46,13 @@ const LoginSignUp = () => {
         </div>
 
         <div className="form-container sign-in-container">
-          <form>
+          <form onSubmit={handleLoginClick}>
             <h1>Login</h1>
             <div className = "paragraph2">
                 Enter your complete details
             </div>
-            <input type="email" placeholder="Email Address" />
-            <input type="password" placeholder="Password" />
+            <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">LOGIN</button>
           </form>
         </div>
@@ -70,6 +94,7 @@ const LoginSignUp = () => {
             </div>
           </div>
         </div>
+        
       </div>
     );
   };
