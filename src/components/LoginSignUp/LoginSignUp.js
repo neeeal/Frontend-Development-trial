@@ -111,7 +111,7 @@ const LoginSignUp = () => {
               <div className = "glass-morph-container">
                 <h1>Hello Friend!</h1>
                 <div className = "paragraph">
-                  Enter your personal detais and let's start your 
+                  Enter your personal details and let's start your 
                   rice stress scanning
                 </div>
                 <button
