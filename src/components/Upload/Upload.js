@@ -38,6 +38,7 @@ export default function Upload() {
       const base64Image = await convertBlobToBase64(imageUri)
       console.log("LOADING LOADING LOADING...")
       // console.log(base64Image)
+      const userId = user.user_id; 
       const response = await fetch('https://softies-backend-production.up.railway.app/api/recommendation/skan', { 
       method: 'POST',
       body: JSON.stringify({
@@ -45,7 +46,7 @@ export default function Upload() {
         }),
       headers: {
         'Content-Type': 'application/json',
-        'User-Id': user.userId,
+        'User-Id': userId, // Include the user ID in the headers
       },
     });
       const result = await response.json();
