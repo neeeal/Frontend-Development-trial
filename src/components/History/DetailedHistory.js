@@ -1,18 +1,26 @@
 import React from 'react';
 import './DetailedHistory.css';
 import placeholder_img from '../../../src/assets/sheat.png';
+import goBack_button from '../../../src/assets/icon _arrow left.png';
 
 function DetailedHistory() {
   return (
     <div>
       <div className="header">
-        <h1>HISTORY</h1>
+        <div className="title">
+          <h1>HISTORY</h1>
+        </div>
+        <div className="goBack">
+          <button onClick={() => { /* Add functionality to go back */ }}>
+            <img src={goBack_button} alt="Go Back" />
+          </button>
+        </div>
       </div>
 
       <div className="container">
-        <div className = "class">
-            <h2>Scan #1: </h2>
-            <p>Biotic Stress: Sheath Blight</p>
+        <div className="class">
+          <h2>Scan #1: </h2>
+          <p>Biotic Stress: Sheath Blight</p>
         </div>
         <div className="content">
           <div className="image">
