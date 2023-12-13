@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logopngnew.png';
 import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; // Import the user icon
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext';
 
 function Navbar() {
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
-
+  const {isAuthenticated,logout,user} = useAuth();
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
+  };
+  const navigate = useNavigate();
+
+  const handleLogout = async (event) => {
+    event.preventDefault(); 
+    await logout()
+    if (await isAuthenticated===false){
+      navigate('/login');
+    }
   };
 
   return (
@@ -35,13 +46,16 @@ function Navbar() {
         >
           <span className="menuItem">
             <FontAwesomeIcon icon={faUser} size="lg" className="profile-icon" />
-            Profile
+            Hi {user.username}
           </span>
           {isProfileDropdownOpen && (
             <div className="profile-dropdown">
-              <Link className="dropdown-item profile-text">Login</Link>
+              { isAuthenticated===false ? <RouterLink to="/login" className="dropdown-item profile-text">Login</RouterLink>:
+              <>
               <Link className="dropdown-item profile-text">Edit Profile</Link>
-              <Link className="dropdown-item profile-text">Logout</Link>
+              <span onClick={handleLogout} className="dropdown-item profile-text">Logout</span>
+              </>
+            }
             </div>
           )}
         </div>
