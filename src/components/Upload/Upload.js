@@ -11,7 +11,9 @@ export default function Upload() {
   const [recommendation, setRecommendation] = useState("No recommendation yet");
   const [fireRating, setFireRating] = useState(0);
   const [results, setResults] = useState({});
-
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem('userData'))|| {}
+  });
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -40,6 +42,7 @@ export default function Upload() {
       method: 'POST',
       body: JSON.stringify({
           "image":base64Image,
+          'User-Id': user.userId,
         }),
       headers: {
         'Content-Type': 'application/json',
