@@ -18,6 +18,22 @@ body {
     position: relative;
   }
 
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .goBack {
+    margin-left: 68rem;
+    margin-top: 2rem;
+  }
+  
+  .goBack img {
+    height: 15px;
+    width: 30px;
+  }
+
   .container {
     border: 2px solid black;
     border-radius: 8px; 
@@ -27,7 +43,6 @@ body {
   }
   
   .header {
-    color: #049B04;
     font-family: Montserrat-Bold;
     align-items: left;
     justify-content: left;
@@ -36,6 +51,10 @@ body {
     margin-left: 4rem;
     margin-top:3rem;
 }
+
+  .title {
+    align-items: flex-start;
+  }
   
   .header h1 {
     margin: 0;
