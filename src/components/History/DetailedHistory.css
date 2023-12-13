@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../../../public/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../../../public/fonts/Montserrat-Regular.ttf);
+}
+
+body {
+    height: 100vh /*calc(100vh - 2rem)*/;
+    width: 100vw;
+    margin:  auto;
+    overflow: hidden;
+    background-size: cover; 
+    background-position: center center; 
+    position: relative;
+  }
+
+  .container {
+    border: 2px solid black;
+    border-radius: 8px; 
+    padding: 20px;
+    margin: 4rem;
+    margin-top: 10px;
+  }
+  
+  .header {
+    color: #049B04;
+    font-family: Montserrat-Bold;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    display: flex;
+    margin-left: 4rem;
+    margin-top:3rem;
+}
+  
+  .header h1 {
+    margin: 0;
+    font-size: 50px;
+    color: #049B04;
+    text-decoration: underline;
+  }
+
+  .class {
+    color: black;
+    margin-left: 1rem;
+    align-items: row;
+  }
+
+  .class h2 {
+    font-size: 20px;
+    font-family: Montserrat-Bold;
+  }
+  
+  .class p {
+    font-size: 20px;
+    font-family: Montserrat-Regular;
+  }
+  .image {
+    float: left;
+    margin-right: 20px;
+  }
+  
+  .image img {
+    height: 400px;  
+    width: 600px;
+  }
+
+  .content {
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    color: black;
+  }
+  
+    .classification,
+    .recommendation,
+    .references {
+    margin-bottom: 60px;
+    font-size: 25px;
+    color: #049B04;
+    font-family: Montserrat-Bold;
+    text-align: left;
+    flex: 1;
+    }
