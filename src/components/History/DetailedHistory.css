@@ -50,7 +50,7 @@ body {
     width: 30px;
   }
 
-  .container {
+  .container_detailed {
     border: 2px solid black;
     border-radius: 8px; 
     padding: 20px;
@@ -117,9 +117,10 @@ body {
     .recommendation,
     .references {
     margin-bottom: 60px;
-    font-size: 25px;
+    font-size: 20px;
     color: #049B04;
-    font-family: Montserrat-Bold;
+    font-weight: normal;
+    font-family: Montserrat;
     text-align: left;
     flex: 1;
     }

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-// import Navbar from "./components/Navbar/Navbar";
-// import Intro from "./components/Introduction/Intro";
-// import Tutorial from './components/Tutorial/Tutorial';
-// import LoginSignUp from './components/LoginSignUp/LoginSignUp';
-// import Upload from "./components/Upload/Upload";
-// import History from "./components/History/History"; 
+import Navbar from "./components/Navbar/Navbar";
+import Intro from "./components/Introduction/Intro";
+import Tutorial from './components/Tutorial/Tutorial';
+import LoginSignUp from './components/LoginSignUp/LoginSignUp';
+import Upload from "./components/Upload/Upload";
+import History from "./components/History/History"; 
 import DetailedHistory from "./components/History/DetailedHistory";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
@@ -22,12 +22,12 @@ function App() {
 
   return (  
     <div className="App">
-      {/* <Navbar/> 
+      <Navbar/> 
       <Intro/> 
       <Tutorial/>
       <Upload/>  
-      <History/> */}
-      <DetailedHistory/>
+      <History/>
+      {/* <DetailedHistory/> */}
       {/* <LoginSignUp/> */}
 
     </div>
