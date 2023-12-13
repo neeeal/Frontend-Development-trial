@@ -42,10 +42,10 @@ export default function Upload() {
       method: 'POST',
       body: JSON.stringify({
           "image":base64Image,
-          'User-Id': user.userId,
         }),
       headers: {
         'Content-Type': 'application/json',
+        'User-Id': user.userId,
       },
     });
       const result = await response.json();
