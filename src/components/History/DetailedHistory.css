@@ -11,11 +11,11 @@
 body {
     height: 100vh /*calc(100vh - 2rem)*/;
     width: 100vw;
-    margin:  auto;
-    overflow: hidden;
-    background-size: cover; 
+    /* margin:  auto; */
+    /* overflow: hidden; */
+    /* background-size: cover; 
     background-position: center center; 
-    position: relative;
+    position: relative; */
   }
 
   button {
@@ -34,7 +34,23 @@ body {
     width: 30px;
   }
 
-  .container {
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .goBack {
+    margin-left: 68rem;
+    margin-top: 2rem;
+  }
+  
+  .goBack img {
+    height: 15px;
+    width: 30px;
+  }
+
+  .container_detailed {
     border: 2px solid black;
     border-radius: 8px; 
     padding: 20px;
@@ -101,9 +117,10 @@ body {
     .recommendation,
     .references {
     margin-bottom: 60px;
-    font-size: 25px;
+    font-size: 20px;
     color: #049B04;
-    font-family: Montserrat-Bold;
+    font-weight: normal;
+    font-family: Montserrat;
     text-align: left;
     flex: 1;
     }
