@@ -11,14 +11,14 @@
 body {
     height: 100vh /*calc(100vh - 2rem)*/;
     width: 100vw;
-    margin:  auto;
-    overflow: hidden;
-    background-size: cover; 
+    /* margin:  auto; */
+    /* overflow: hidden; */
+    /* background-size: cover; 
     background-position: center center; 
-    position: relative;
+    position: relative; */
   }
 
-  .container {
+  .container_detailed {
     border: 2px solid black;
     border-radius: 8px; 
     padding: 20px;

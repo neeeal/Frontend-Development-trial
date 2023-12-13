@@ -9,7 +9,7 @@ function DetailedHistory() {
         <h1>HISTORY</h1>
       </div>
 
-      <div className="container">
+      <div className="container_detailed">
         <div className = "class">
             <h2>Scan #1: </h2>
             <p>Biotic Stress: Sheath Blight</p>
