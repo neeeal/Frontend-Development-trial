@@ -10,15 +10,15 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 
 function App() {
-  // const navigate = useNavigate();
-  // const { isAuthenticated } = useAuth();
-  // useEffect(() => {
-  //   // console.log(isAuthenticated,"fd")
-  //   if (isAuthenticated===false){
-  //     navigate('/login');
-  //   }
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  useEffect(() => {
+    // console.log(isAuthenticated,"fd")
+    if (isAuthenticated===false){
+      navigate('/login');
+    }
 
-  // });
+  });
 
   return (  
     <div className="App">

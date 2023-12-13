@@ -122,7 +122,7 @@ export default function Upload() {
               <b>{classification.stress_name}</b> <br/>
               {classification.stress_desc}
             </span>
-            <section className='fireCon'>
+            {/* <section className='fireCon'>
               {Array.from({ length: 5 }).map((_, index) => (
                 <FaFire
                   key={index}
@@ -131,7 +131,7 @@ export default function Upload() {
                   className="fire-icon"
                 />
               ))}
-            </section>
+            </section> */}
           </div>
           <br /><br />
           <span className='headerStyle'>Recommendation</span><br />

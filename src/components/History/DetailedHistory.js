@@ -22,7 +22,7 @@ function DetailedHistory() {
         // Assuming you have a way to get the user ID from your authentication system
         const userId = state.user_id; 
         const stressId = state.stress_id
-        const response = await fetch(`http://127.0.0.1:5000/api/history/get_history_entry/${state.history_id}`, {
+        const response = await fetch(`https://softies-backend-production.up.railway.app/api/history/get_history_entry/${state.history_id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
