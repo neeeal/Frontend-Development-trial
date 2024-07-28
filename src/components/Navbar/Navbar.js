@@ -26,7 +26,7 @@ function Navbar() {
     }
   };
 
-  const showAlert = () => {
+  const showAlert = () => { // TODO: Remove
     alert('This is still under development. To edit your profile, please use the mobile app');
   };
 

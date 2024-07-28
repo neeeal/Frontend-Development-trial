@@ -11,6 +11,11 @@ function History() {
   const [user, setUser] = useState(() => {
     return {userId:localStorage.getItem('userData'),token:localStorage.getItem('token')}|| {}
   });
+
+  const showAlertHistory= () => { // TODO: Remove
+    alert('Development... History fetched');
+  };
+
   useEffect(() => {
     const fetchHistory = async () => {
       try {
@@ -44,6 +49,7 @@ function History() {
         setHistory(historyWithImages);
         setLoading(false);
         console.log(history)
+        showAlertHistory()
       } catch (error) {
         console.error(error);
         setLoading(false);

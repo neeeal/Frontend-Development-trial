@@ -14,6 +14,11 @@ export default function Upload() {
   const [user, setUser] = useState(() => {
     return {userId: localStorage.getItem('userData'), token: localStorage.getItem('token')}|| {}
   });
+
+  const showAlertScan = () => { // TODO: Remove
+    alert('Development... Scan Success');
+  };
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -57,6 +62,7 @@ export default function Upload() {
       setRecommendation(data.recommendation);
       setFireRating(data.stress_level);
       setResults(data)
+      showAlertScan()
     } catch (error) {
       console.log(error)
     }
