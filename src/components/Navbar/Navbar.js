@@ -8,13 +8,16 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 
 function Navbar() {
+  const [userData, setUserData] = useState({});
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const {isAuthenticated,logout,user} = useAuth();
+  const {isAuthenticated,logout} = useAuth();
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
   };
   const navigate = useNavigate();
-
+  const [user, setUser] = useState(() => {
+    return {userId:localStorage.getItem('userData'),token:localStorage.getItem('token')}|| {}
+  });
   const handleLogout = async (event) => {
     event.preventDefault(); 
     await logout()
@@ -26,6 +29,34 @@ function Navbar() {
   const showAlert = () => {
     alert('This is still under development. To edit your profile, please use the mobile app');
   };
+
+  useEffect(() => {
+    const fetchUserData= async () => {
+      try {
+
+        const response = await fetch('https://softies-backend-production.up.railway.app/api/users/get_user/'+user.userId, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + user.token, // Include the user ID in the headers
+          },
+        });
+        const result = await response.json();
+
+        // Convert the object into an array
+        setUserData(result.data)
+        console.log(userData);
+
+
+
+        console.log()
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <nav className='navbar'>
@@ -50,7 +81,7 @@ function Navbar() {
         >
           <span className="menuItem">
             <FontAwesomeIcon icon={faUser} size="lg" className="profile-icon" />
-            Hi {user.username}
+            Hi {userData.username}
           </span>
           {isProfileDropdownOpen && (
             <div className="profile-dropdown">
