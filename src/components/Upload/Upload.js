@@ -50,12 +50,13 @@ export default function Upload() {
       },
     });
       const result = await response.json();
+      const data = result.data;
       // result assign to state
-      console.log(result)
-      setClassification({stress_name : result.stress_name, stress_desc: result.description});
-      setRecommendation(result.recommendations);
-      setFireRating(result.stress_level);
-      setResults(result)
+      console.log(data)
+      setClassification({stress_name : data.stress_name, stress_desc: data.description});
+      setRecommendation(data.recommendation);
+      setFireRating(data.stress_level);
+      setResults(data)
     } catch (error) {
       console.log(error)
     }
@@ -136,11 +137,26 @@ export default function Upload() {
           </div>
           <br /><br />
           <span className='headerStyle'>Recommendation</span><br />
-          <span className='paragraphStyle'>{recommendation}</span><br /><br/>
+          {
+            results.recommendation.split("\n\n").map(line=>
+              <>
+                <span className='paragraphStyle'>{line}</span><br /><br/>
+              </>
+            )
+          }
 
           <span className='headerStyle'>References</span><br />
-          <span className='paragraphStyle'>{results.description_src}</span><br /><br/>
-          <span className='paragraphStyle'>{results.recommendation_src}</span><br />
+          {
+            results.description_src === results.recommendation_src? 
+            <>
+              <span className='paragraphStyle'>{results.description_src}</span><br /><br/>
+            </>
+            : 
+            <>
+              <span className='paragraphStyle'>{results.description_src}</span><br /><br/>
+              <span className='paragraphStyle'>{results.recommendation_src}</span><br />
+            </>
+          }
           
         </div>
       </main>
