@@ -23,6 +23,10 @@ function Navbar() {
     }
   };
 
+  const showAlert = () => {
+    alert('This is still under development. To edit your profile, please use the mobile app');
+  };
+
   return (
     <nav className='navbar'>
       <img src={logo} alt="Logo" className='logo' onClick={() => window.location.href = ' / '} />
@@ -52,7 +56,7 @@ function Navbar() {
             <div className="profile-dropdown">
               { isAuthenticated===false ? <RouterLink to="/login" className="dropdown-item profile-text">Login</RouterLink>:
               <>
-              <Link className="dropdown-item profile-text">Edit Profile</Link>
+              <Link className="dropdown-item profile-text" onClick={showAlert}>Edit Profile</Link>
               <span onClick={handleLogout} className="dropdown-item profile-text">Logout</span>
               </>
             }

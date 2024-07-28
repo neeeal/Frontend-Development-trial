@@ -9,32 +9,36 @@ function History() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(() => {
-    return {userId: localStorage.getItem('userData'), token: localStorage.getItem('token')}|| {}
+    return {userId:localStorage.getItem('userData'),token:localStorage.getItem('token')}|| {}
   });
   useEffect(() => {
     const fetchHistory = async () => {
       try {
         // Assuming you have a way to get the user ID from your authentication system
+        // const userId = user.user_id; 
+
         const response = await fetch('https://softies-backend-production.up.railway.app/api/history/get_history_with_images', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'User-Id': user.userId, // Include the user ID in the headers
-            'Authorization': 'Bearer ' + user.token
+            'Authorization': "Bearer " + user.token, // Include the user ID in the headers
           },
         });
         const result = await response.json();
 
         // Convert the object into an array
-        const historyArray = result.history_with_images; // Ensure the correct property name
+        const historyArray = result.data.history; // Ensure the correct property name
         console.log(result);
 
         // Assuming the server returns history entries with an "image" field
         // and the image field is a base64-encoded image data
-        const historyWithImages = historyArray.map(entry => {
-          const imageSrc = `data:image/jpeg;base64,${entry.image}`;
-          console.log(imageSrc)
-          return { ...entry, imageSrc };
+        const historyWithImages = historyArray
+        // .slice(0, 6)
+        .map(entry => {
+          const image = `data:image/jpeg;base64,${entry.rice_image}`;
+          console.log(image)
+          return { ...entry, image:image };
         });
 
         setHistory(historyWithImages);
@@ -51,7 +55,7 @@ function History() {
 
   const handleHistoryClick = async (entry) => {
     console.log(entry.history_id)
-    navigate('/detailed',{state:{"history_id":entry.history_id,"user_id":user.user_id,"scan_num":entry.scan_num,"stress_id":entry.stress_id,"status":entry.status}})
+    navigate('/detailed',{state:entry})
     // event.preventDefault();
     // Add your logic for handling click events
   };
@@ -69,12 +73,12 @@ function History() {
           history.map((entry, index) => (
             <div className="card" key={index}>
               <div className="image-container">
-                <img src={entry.imageSrc} alt={`Scan No.${entry.scan_num}`} style={{height:"24vw",width:"24vw"}}/>
-                <button className="results-btn" onClick={() => handleHistoryClick(entry)}>
+                <img src={entry.image} alt={`Scan No.${index + 1}`} style={{height:"24vw",width:"24vw"}}/>
+                <button className="results-btn" onClick={() => handleHistoryClick({...entry, scan_num: index+1})}>
                   Show Results
                 </button>
               </div>
-              <p className="scan-title">SCAN NO. {entry.scan_num}</p>
+              <p className="scan-title">SCAN NO. {index + 1}</p>
             </div>
           ))
         )}

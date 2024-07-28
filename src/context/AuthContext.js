@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   const [user, setUser] = useState(() => {
-    return JSON.parse(localStorage.getItem('userData')) || {};
+    return localStorage.getItem('userData') || null;
   });
 
   const [token, setToken] = useState(() => {

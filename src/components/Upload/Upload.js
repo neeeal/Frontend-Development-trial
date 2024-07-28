@@ -138,11 +138,13 @@ export default function Upload() {
           <br /><br />
           <span className='headerStyle'>Recommendation</span><br />
           {
-            results.recommendation.split("\n\n").map(line=>
-              <>
+            results.recommendation ? 
+            results.recommendation.split("\n\n").map((line,idx)=>
+              <div key={idx}>
                 <span className='paragraphStyle'>{line}</span><br /><br/>
-              </>
-            )
+              </div>
+            ):
+            <></>
           }
 
           <span className='headerStyle'>References</span><br />
