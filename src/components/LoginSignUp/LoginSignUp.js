@@ -3,58 +3,54 @@ import './LoginSignUp.css';
 import signIn from '../../assets/signIn.png';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
 const LoginSignUp = () => {
-    const [addclass, setaddclass] = useState("");
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [contact, setContact] = useState('');
+  const [addclass, setaddclass] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [contact, setContact] = useState('');
 
-    const navigate = useNavigate();
-    const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const { login, isAuthenticated } = useAuth();
 
-    useEffect(() => {
-      if (isAuthenticated===true){
-        navigate('/');
-      }
-    });
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
-    const handleLoginClick = async (event) => {
-      event.preventDefault(); 
-      await login(email, password, event)
-      if (await isAuthenticated===true){
-        navigate('/');
-      }
-    };
+  const handleLoginClick = async (event) => {
+    event.preventDefault(); 
+    await login(email, password, event);
+    // No need to navigate again here, as the `useEffect` will handle it
+  };
 
-    const handleSignUp = async (event) => {
-      event.preventDefault(); 
-      try {
-        const response = await fetch('https://softies-backend-production.up.railway.app/api/users/signup', {
-          method: 'POST',
-          body: JSON.stringify({
-            email:email,
-            password: password,
-            username:username,
-            first_name: firstName,
-            last_name: lastName,
-            contact: contact
-          }),
-          headers: {
+  const handleSignUp = async (event) => {
+    event.preventDefault(); 
+    try {
+      const response = await fetch('https://softies-backend-production.up.railway.app/api/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password,
+          username,
+          first_name: firstName,
+          last_name: lastName,
+          contact
+        }),
+        headers: {
           'Content-Type': 'application/json',
-          },
+        },
       });
-        const result = await response.json();
-        setaddclass("")
-      //   showToast(result.msg)
-      //  console.log("error")
-      } catch (error) {
-        console.log(error)
-      }
-    };
+      const result = await response.json();
+      setaddclass("");
+      // Optionally, you can navigate to the login page or show a success message
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
     return (
       <div className={`container ${addclass}`} id="loginSignup">
@@ -81,7 +77,7 @@ const LoginSignUp = () => {
             <div className = "paragraph2">
                 Enter your complete details
             </div>
-            <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="text" placeholder="Username or Email Address" onChange={(e) => setEmail(e.target.value)}/>
             <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">LOGIN</button>
           </form>
