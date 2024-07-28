@@ -14,7 +14,9 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
     return localStorage.getItem('token') || null;
   });
-
+  const showAlert = (errorMessage) => {
+    alert(`Error! ${errorMessage}`);
+  };
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated);
     localStorage.setItem('userData', user);
@@ -47,7 +49,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', userData.data.token);
       } else {
         // Handle login failure
-        // setError('Login failed. Please check your credentials.');
+        const userData = await response.json();
+        showAlert(userData.msg)
+      // setError('Login failed. Please check your credentials.');
       }
     } catch (error) {
       console.error('Error during login:', error.message);

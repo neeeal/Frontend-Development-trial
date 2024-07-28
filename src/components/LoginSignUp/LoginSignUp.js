@@ -11,7 +11,11 @@ const LoginSignUp = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [contact, setContact] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
 
@@ -25,6 +29,10 @@ const LoginSignUp = () => {
     event.preventDefault(); 
     await login(email, password, event);
     // No need to navigate again here, as the `useEffect` will handle it
+  };
+
+  const showAlert = (errorMessage) => {
+    alert(`Error! ${errorMessage}`);
   };
 
   const handleSignUp = async (event) => {
@@ -45,10 +53,15 @@ const LoginSignUp = () => {
         },
       });
       const result = await response.json();
+      if (result.msg.includes("Client Error") || result.msg.includes("Internal Server Error")){
+        showAlert(result.msg)
+        return;
+      }
       setaddclass("");
       // Optionally, you can navigate to the login page or show a success message
     } catch (error) {
       console.error(error);
+      showAlert(error)
     }
   };
 
@@ -66,7 +79,26 @@ const LoginSignUp = () => {
             <input type="contact" placeholder="Contact" onChange={(e) => setContact(e.target.value)}/>
             <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
             <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+            <div style={{minWidth:"100%", display: "flex"}}>
+              <input style={{flex: 10}} type={isPasswordVisible ? 'text' : 'password'} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+              <button
+                style={{
+                  flex: 1,
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  margin: 0,
+                  cursor: "pointer",
+                  outline: "none",
+                }}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent the form submission
+                  togglePasswordVisibility();
+                }}
+              >
+                <span style={{color: "black"}}>{isPasswordVisible ? 'Hide' : 'Show'}</span>
+              </button>
+            </div>
             <button onClick={handleSignUp}>SIGN UP</button>
           </form>
         </div>
@@ -78,7 +110,26 @@ const LoginSignUp = () => {
                 Enter your complete details
             </div>
             <input type="text" placeholder="Username or Email Address" onChange={(e) => setEmail(e.target.value)}/>
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+            <div style={{minWidth:"100%", display: "flex"}}>
+              <input style={{flex: 10}} type={isPasswordVisible ? 'text' : 'password'} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+              <button
+                style={{
+                  flex: 1,
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  margin: 0,
+                  cursor: "pointer",
+                  outline: "none",
+                }}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent the form submission
+                  togglePasswordVisibility();
+                }}
+              >
+                <span style={{color: "black"}}>{isPasswordVisible ? 'Hide' : 'Show'}</span>
+              </button>
+            </div>
             <button type="submit">LOGIN</button>
           </form>
         </div>
