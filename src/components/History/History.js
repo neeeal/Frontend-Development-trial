@@ -9,19 +9,18 @@ function History() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(() => {
-    return JSON.parse(localStorage.getItem('userData'))|| {}
+    return {userId: localStorage.getItem('userData'), token: localStorage.getItem('token')}|| {}
   });
   useEffect(() => {
     const fetchHistory = async () => {
       try {
         // Assuming you have a way to get the user ID from your authentication system
-        const userId = user.user_id; 
-
         const response = await fetch('https://softies-backend-production.up.railway.app/api/history/get_history_with_images', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'User-Id': userId, // Include the user ID in the headers
+            'User-Id': user.userId, // Include the user ID in the headers
+            'Authorization': 'Bearer ' + user.token
           },
         });
         const result = await response.json();

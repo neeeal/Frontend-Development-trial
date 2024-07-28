@@ -12,7 +12,7 @@ export default function Upload() {
   const [fireRating, setFireRating] = useState(0);
   const [results, setResults] = useState({});
   const [user, setUser] = useState(() => {
-    return JSON.parse(localStorage.getItem('userData'))|| {}
+    return {userId: localStorage.getItem('userData'), token: localStorage.getItem('token')}|| {}
   });
   const handleUpload = (e) => {
     const file = e.target.files[0];
@@ -36,17 +36,17 @@ export default function Upload() {
   const fetchClassification = async (imageUri) => {
     try {
       const base64Image = await convertBlobToBase64(imageUri)
-      console.log("LOADING LOADING LOADING...")
-      // console.log(base64Image)
-      const userId = user.user_id; 
+      const body = JSON.stringify({
+        image:base64Image,
+        _id: user.userId
+      })
+      console.log(body)
       const response = await fetch('https://softies-backend-production.up.railway.app/api/recommendation/skan', { 
       method: 'POST',
-      body: JSON.stringify({
-          "image":base64Image,
-        }),
+      body: body,
       headers: {
         'Content-Type': 'application/json',
-        'User-Id': userId, // Include the user ID in the headers
+        'Authorization': 'Bearer ' + user.token
       },
     });
       const result = await response.json();
