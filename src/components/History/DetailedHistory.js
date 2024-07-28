@@ -17,9 +17,9 @@ function DetailedHistory() {
   const [recommendation, setRecommendation] = useState("")
   const [references, setreferences] = useState([])
 
-  const showAlertHistory= () => { // TODO: Remove
-    alert('Development... History fetched');
-  };
+  // const showAlertHistory= () => { // TODO: Remove
+  //   alert('Development... History fetched');
+  // };
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -50,7 +50,6 @@ function DetailedHistory() {
         // Convert the object into an array
         // const historyArray = result.history_with_images; // Ensure the correct property name
         console.log(result);
-        showAlertHistory();
         // console.log(history)
       } catch (error) {
         console.error(error);
@@ -58,6 +57,7 @@ function DetailedHistory() {
     };
 
     fetchHistory();
+    // showAlertHistory();
   }, []);
   return (
     <div>

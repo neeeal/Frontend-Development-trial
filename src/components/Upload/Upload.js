@@ -19,6 +19,10 @@ export default function Upload() {
     alert('Development... Scan Success');
   };
 
+  const showAlertNoImage= () => { // TODO: Remove
+    alert('Development... No image to scan');
+  };
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,6 +45,11 @@ export default function Upload() {
   const fetchClassification = async (imageUri) => {
     try {
       const base64Image = await convertBlobToBase64(imageUri)
+
+      if (base64Image === "PCFET0NUWVBFIGh0bWw+DQo8aHRtbCBsYW5nPSJlbiI+DQogIDxoZWFkPg0KICAgIDxtZXRhIGNoYXJzZXQ9InV0Zi04IiAvPg0KICAgIDxsaW5rIHJlbD0iaWNvbiIgaHJlZj0iLi9za2FuaW4tbG9nby5pY28iIC8+DQogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIiAvPg0KICAgIDxtZXRhIG5hbWU9InRoZW1lLWNvbG9yIiBjb250ZW50PSIjMDAwMDAwIiAvPg0KICAgIDxtZXRhDQogICAgICBuYW1lPSJkZXNjcmlwdGlvbiINCiAgICAgIGNvbnRlbnQ9IlNLQU5JTiINCiAgICAvPg0KICAgIDxsaW5rIHJlbD0icHJlY29ubmVjdCIgaHJlZj0iaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbSI+DQogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJzdHlsZXMuY3NzIj4NCiAgICA8bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU1vbnRzZXJyYXQ6d2dodEAzMDA7NDAwOzUwMDs2MDA7NzAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0Ij4NCiAgICA8dGl0bGU+U0tBTklOPC90aXRsZT4NCiAgPHNjcmlwdCBkZWZlciBzcmM9Ii9zdGF0aWMvanMvYnVuZGxlLmpzIj48L3NjcmlwdD48L2hlYWQ+DQogIDxib2R5Pg0KICAgIDxub3NjcmlwdD5Zb3UgbmVlZCB0byBlbmFibGUgSmF2YVNjcmlwdCB0byBydW4gdGhpcyBhcHAuPC9ub3NjcmlwdD4NCiAgICA8ZGl2IGlkPSJyb290Ij48L2Rpdj4NCiAgPC9ib2R5Pg0KPC9odG1sPg0K"){
+        showAlertNoImage();
+        return;
+      }
       const body = JSON.stringify({
         image:base64Image,
         _id: user.userId

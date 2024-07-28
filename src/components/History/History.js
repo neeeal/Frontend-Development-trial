@@ -59,7 +59,7 @@ function History() {
     fetchHistory();
   }, []);
 
-  const handleHistoryClick = async (entry) => {
+  const handleHistoryClick = (entry) => {
     console.log(entry.history_id)
     navigate('/detailed',{state:entry})
     // event.preventDefault();
