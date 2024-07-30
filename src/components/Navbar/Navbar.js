@@ -10,7 +10,7 @@ import { useAuth } from '../../context/AuthContext';
 function Navbar() {
   const [userData, setUserData] = useState({});
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const {isAuthenticated,logout} = useAuth();
+  const {isAuthenticated,logout, setIsAuthenticated} = useAuth();
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
   };
@@ -43,11 +43,13 @@ function Navbar() {
         });
         const result = await response.json();
 
+        if (!response.ok){
+          setIsAuthenticated(false)
+        }
+
         // Convert the object into an array
         setUserData(result.data)
         console.log(userData);
-
-
 
         console.log()
       } catch (error) {
