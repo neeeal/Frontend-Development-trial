@@ -55,7 +55,7 @@ const ProfileModal = ({ isOpen, onClose, userData, auth }) => {
           email
         ],
       })
-      const response = await fetch('https://grubworm-full-dory.ngrok-free.app/api/users/update_user', {
+      const response = await fetch('https://softies-backend-production.up.railway.app/api/users/update_user', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const ProfileModal = ({ isOpen, onClose, userData, auth }) => {
         new_password_conformation: newPasswordConfirmation
 
       })
-      const response = await fetch('https://grubworm-full-dory.ngrok-free.app/api/users/update_user', {
+      const response = await fetch('https://softies-backend-production.up.railway.app/api/users/update_user', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
