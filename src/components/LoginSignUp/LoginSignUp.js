@@ -74,11 +74,11 @@ const LoginSignUp = () => {
       console.error("Email is required")
       return;
     }
-    
+
     event.preventDefault();
     try {
       // Make an API call to your server to handle the forgot password logic
-      const response = await fetch('https://grubworm-full-dory.ngrok-free.app/api/email/forgot_password', { // TODO: Change link
+      const response = await fetch('https://softies-backend-production.up.railway.app/api/email/forgot_password', { // TODO: Change link
         method: 'POST',
         body: JSON.stringify({ email: forgotEmail }),
         headers: {
