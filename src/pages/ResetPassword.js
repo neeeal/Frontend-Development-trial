@@ -88,7 +88,7 @@ export const ResetPassword = () => {
     return (
       <div className="modal">
         <div className="modal-content">
-          <h2>Loading...</h2>
+          <h2 className="monsteratt">Loading...</h2>
         </div>
       </div>
     );
@@ -99,7 +99,7 @@ export const ResetPassword = () => {
     return (
       <div className="modal">
         <div className="modal-content">
-          <h1>Invalid Token</h1>
+          <h1 className="monsteratt">Invalid Token</h1>
           <p>{error}</p>
         </div>
       </div>
@@ -111,8 +111,8 @@ export const ResetPassword = () => {
     return (
       <div className="modal">
         <div className="modal-content success-modal">
-          <h1>Password Reset Successful</h1>
-          <p>Your password has been reset successfully. You will be redirected to the login page shortly.</p>
+          <h1 className="monsteratt">Password Reset Successful</h1>
+          <p className="monsteratt">Your password has been reset successfully. You will be redirected to the login page shortly.</p>
         </div>
       </div>
     );
@@ -125,7 +125,7 @@ export const ResetPassword = () => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <h1>Reset Password</h1>
+        <h1 className="monsteratt">Reset Password</h1>
         <div style={{ minWidth: "100%", display: "flex" }}>
           <input
             style={{ flex: 9 }}
