@@ -84,7 +84,7 @@ const ProfileModal = ({ isOpen, onClose, userData, auth }) => {
         field: ['password'],
         value: [newPassword],
         old_password: password,
-        new_password_conformation: newPasswordConfirmation
+        new_password_confirmation: newPasswordConfirmation
 
       })
       const response = await fetch('https://softies-backend-production.up.railway.app/api/users/update_user', {

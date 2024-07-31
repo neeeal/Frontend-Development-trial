@@ -13,7 +13,7 @@ function Navbar() {
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true); // State for loading indicator
-  const { isAuthenticated, logout, setIsAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState(() => {
     return { userId: localStorage.getItem('userData'), token: localStorage.getItem('token') } || {}
@@ -46,21 +46,29 @@ function Navbar() {
             'Authorization': "Bearer " + user.token,
           },
         });
-        const result = await response.json();
-        if (!response.ok) {
-          setIsAuthenticated(false);
+        console.log("RESPONSE STATUS:", response.status); // Log the status code
+        if (response.status !== 200) {
+          console.log("AUTH HERE");
+          await logout();
+          if (!isAuthenticated) {
+            navigate('/login');
+          }
+          // Handle the error or invalid response
         } else {
+          const result = await response.json();
           setUserData(result.data);
         }
       } catch (error) {
-        console.error(error);
+        console.error("ERROR HERE", error);
       } finally {
         setLoading(false); // Set loading to false after fetch
       }
     };
-
+    
     fetchUserData();
-  }, [user.userId, user.token, setIsAuthenticated]);
+    
+    
+  }, [user.userId, user.token, isAuthenticated]);
 
   return (
     <>
