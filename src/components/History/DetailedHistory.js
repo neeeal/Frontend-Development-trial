@@ -46,7 +46,7 @@ function DetailedHistory() {
         } else{
           setreferences([state.description_src,""])
           }
-        setImage(state.image)
+        setImage(state.rice_image)
         // Convert the object into an array
         // const historyArray = result.history_with_images; // Ensure the correct property name
         console.log(result);

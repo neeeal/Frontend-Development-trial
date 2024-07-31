@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { MdCloudUpload } from 'react-icons/md';
-import { FaFire } from 'react-icons/fa';
 import './Upload.css';
 import BG from '../../assets/background.png';
 
-export default function Upload() {
+export default function Upload({ addToHistory }) {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
   const [classification, setClassification] = useState("Not yet classified");
@@ -71,6 +70,7 @@ export default function Upload() {
       setRecommendation(data.recommendation);
       setFireRating(data.stress_level);
       setResults(data)
+      addToHistory(data);
       showAlertScan()
     } catch (error) {
       console.log(error)
