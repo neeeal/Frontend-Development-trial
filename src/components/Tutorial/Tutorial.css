@@ -14,42 +14,38 @@
 }
 
 .tuts {
-    height: 100vh /*calc(100vh - 2rem)*/;
+    height: 100vh;
     width: 100vw;
-    margin:  auto;
+    margin: auto;
     overflow: hidden;
     text-align: justify;
     background-size: cover; 
     background-position: center center; 
     position: relative;
-    /* background-color: antiquewhite; */
 }
 
-.tutsContent{
+.tutsContent {
     display: flex;
-    /* margin-top: 1rem; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .tutsTitle {
     color: green;
     font-family: Montserrat-Black;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     font-size: 3.5rem;
-    display: flex;
     padding-top: 1.75rem;    
-    /* margin-bottom: 1rem; */
+    padding-left: 1rem;
 }
 
 .allSteps {
     max-width: 45rem;
     width: 50vw;
     margin: 0.50rem;
-    margin-left: 7rem;
     text-align: left;
 }
-
 
 .step {
     color: rgba(0, 0, 0, 0.5);
@@ -64,66 +60,27 @@
     backdrop-filter: blur(5px); 
 }
 
-
 .stepDivContent {
     align-content: center;
     justify-content: flex;
 }
 
-.stepOneTitle {
+.stepOneTitle, .stepTwoTitle, .stepThreeTitle {
     color: black;
     font-family: Montserrat-Regular;
     font-size: 1.5rem;
 }
 
-.stepOneClick {
+.stepOneClick, .stepTwoSelect, .stepThreeClick {
     color: green;
     font-family: Montserrat-BoldItalic;
     font-size: 2rem;
 }
 
-.stepOneCaption {
+.stepOneCaption, .stepTwoCaption, .stepThreeCaption {
     font-family: Montserrat-Regular;
     font-size: 1rem;
     color: black;
-}
-
-
-.stepTwoTitle {
-    color: black;
-    font-family: Montserrat-Regular;
-    font-size: 1.5rem;
-}
-
-.stepTwoSelect {
-    color: green;
-    font-family: Montserrat-BoldItalic;
-    font-size: 2rem;
-}
-
-.stepTwoCaption {
-    font-family: Montserrat-Regular;
-    font-size: 1rem;
-    color: black;
-}
-
-
-.stepThreeTitle {
-    color: black;
-    font-family: Montserrat-Regular;
-    font-size: 1.5rem;
-}
-
-.stepThreeClick {
-    color: green;
-    font-family: Montserrat-BoldItalic;
-    font-size: 2rem;
-}
-
-.stepThreeCaption {
-    font-family: Montserrat-Regular;
-    color: black;
-    font-size: 1rem;
 }
 
 .stepIcon {
@@ -153,14 +110,36 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
 }
 
-/* .boxInside {
-    height: 65rem;
-    width: 65rem;
-    background-color: #F9F9F9;
-    border: 1px solid #cccccc; 
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
-    margin: 10rem auto;
+/* Media query for portrait mode */
+@media (orientation: portrait) {
+    .tutsTitle {
+        font-size: 2.5rem; /* Adjust this value as needed */
+        padding-top: 1rem;
+    }
 
-} */
+    .tutsContent {
+        flex-direction: column;
+    }
+
+    .allSteps {
+        width: 90vw; /* Adjust this value as needed */
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .step {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stepIcon {
+        height: 5rem;
+        width: 5rem;
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+
+    .imgContainer {
+        width: 90vw; /* Adjust this value as needed */
+    }
+}

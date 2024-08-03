@@ -1,108 +1,164 @@
+/* Base Navbar Styles */
 .navbar {
-    height: 5rem;
-    width: 100vw;
-    margin: 0 auto;
-    padding: 2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: white;
-    /* filter: drop-shadow(0 -10px 20px rgb(170,170,170)) */
+  height: 5rem;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
 }
 
 .logo {
-    object-fit: contain;
-    height: 8rem;
-    width: 10rem;
-    margin: 1rem;
-    cursor: pointer;
-}
-
-@font-face {
-    font-family: Montserrat-Bold;
-    src: url(../../../public/fonts/Montserrat-Bold.ttf);
+  object-fit: contain;
+  height: 4rem; /* Adjusted for responsiveness */
+  width: auto;
+  cursor: pointer;
 }
 
 .menu {
-    display: flex;
-    flex-direction: row; 
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .menuItem {
-    margin: 4rem;
-    cursor: pointer;
-    margin-left: auto;
-    font-size: 0.8rem;
-    font-family: Montserrat-Bold;
-    position: relative;
-    text-decoration: none;
-    color: black;
+  margin: 0 1rem; /* Adjusted for spacing */
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: Montserrat-Bold;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  padding-bottom: 1px;
 }
 
 .menuItem::before {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    height: 3px;
-    width: 0;
-    background: green;
-    border-radius: 50px;
-    transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  height: 3px;
+  width: 0;
+  background: green;
+  border-radius: 50px;
+  transition: width 0.3s ease;
 }
 
 .menuItem:hover::before {
-    width: 100%;
+  width: 100%;
 }
 
 .menuItem:hover {
-    color: green;
+  color: green;
 }
 
 .profile-menu {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    flex-direction: column; 
-    background: white;
-    border: 1px solid #ccc;
-    width: 110px;
-  }
-  
-  .profile-menu:hover .profile-dropdown {
-    display: flex;
-  }
-  
-  @font-face {
-    font-family: Montserrat-Regular;
-    src: url(../../../public/fonts/Montserrat-Regular.ttf);
+  position: relative;
+  cursor: pointer;
 }
 
-  .dropdown-item {
-    padding: 10px;
-    text-align: left;
-    cursor: pointer;
-    font-family: Monteserrat-Medium;
-    color: black;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #eee;
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #ccc;
+  width: 110px;
+}
+
+.profile-menu:hover .profile-dropdown {
+  display: flex;
+}
+
+.dropdown-item {
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-family: Montserrat-Regular;
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: #eee;
+}
+
+.profile-icon {
+  margin-right: 0.75rem;
+}
+
+/* Burger Menu Styles */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.burger-menu div {
+  width: 1.5rem;
+  height: 0.2rem;
+  background: black;
+  margin: 0.3rem 0;
+  transition: 0.3s;
+}
+
+.burger-menu.active div:nth-child(1) {
+  transform: rotate(-45deg) translate(-0.2rem, 0.2rem);
+}
+
+.burger-menu.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active div:nth-child(3) {
+  transform: rotate(45deg) translate(-0.2rem, -0.2rem);
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  width: 100vw;
+  background: white;
+  border-top: 1px solid #ccc;
+}
+
+/* Media Queries for Portrait Mode */
+@media (orientation: portrait) {
+  .logo {
+      height: 3rem; /* Adjust logo size */
   }
 
-  .profile-icon {
-    margin-right: 0.75rem; 
+  .menu {
+      display: none; /* Hide menu items */
   }
+
+  .burger-menu {
+      display: flex;
+      padding-right: 20px;
+  }
+
+  .nav-links {
+      display: none; /* Hide nav links by default */
+  }
+
+  .nav-links.active {
+      display: flex; /* Show nav links when burger menu is active */
+  }
+}

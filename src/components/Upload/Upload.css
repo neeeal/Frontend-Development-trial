@@ -1,142 +1,196 @@
-    @font-face {
-        font-family: Montserrat-Bold;
-        src: url(../../../public/fonts/Montserrat-Bold.ttf);
-    }
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../../../public/fonts/Montserrat-Bold.ttf);
+}
 
-    @font-face {
-        font-family: Montserrat-Regular;
-        src: url(../../../public/fonts/Montserrat-Regular.ttf);
-    }
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../../../public/fonts/Montserrat-Regular.ttf);
+}
 
+.scan {
+    min-height: 100vh;
+    width: 100vw;
+    margin: auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
 
-    .scan {
-        height: 100vh /*calc(100vh - 2rem)*/;
-        width: 100vw;
-        margin:  auto;
-        overflow: hidden;
-        background-size: cover; 
-        background-position: center center; 
-        position: relative;
-    }
+.stressStyle {
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
+.scanTitle {
+    color: green;
+    font-family: Montserrat-Black;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    font-size: 3.5rem;
+    display: flex;
+    margin-left: 1rem;
+    margin-top: 0.8rem;
+}
+
+.BG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.scanContainer {
+    display: flex;
+    max-width: 90rem;
+    margin: 0 auto;
+    min-height: 35rem;
+    height: auto;
+}
+
+.uploadSection {
+    flex: 1;
+    padding: 5%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0 0;
+}
+
+.resultsSection {
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+    text-align: left;
+    color: #000000;
+    overflow-y: auto; /* Enable vertical scrolling if text overflows */
+    max-height: 100%; /* Ensure it doesn't exceed the height of the parent */
+}
+
+.image-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333333;
+    height: 25rem;
+    max-height: 25rem;
+    max-width: 42.4rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    position: relative;
+    background-color: cornsilk;
+}
+
+.image-form img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.input-field {
+    display: none;
+}
+
+.upload-placeholder {
+    text-align: center;
+}
+
+.scanContainer button {
+    margin-top: 1rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 12px;
+    font-family: Montserrat-Regular;
+    font-size: 1rem;
+    background-color: green;
+}
+
+.headerStyle {
+    font-family: Montserrat-Bold;
+    font-size: 2rem;
+    color: #000000;
+}
+
+.paragraphStyle {
+    font-family: Montserrat-Regular;
+    color: black;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.formParagraph {
+    font-size: 1rem;
+    color: #000000;
+}
+
+.fire-icon {
+    margin-left: 0.5rem;
+}
+
+.fire-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recommendation {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media query for portrait mode */
+@media (orientation: portrait) {
     .scanTitle {
-        color: green;
-        font-family: Montserrat-Black;
-        align-items: left;
-        justify-content: left;
-        text-align: left;
-        font-size: 3.5rem;
-        display: flex;
-        /* padding-top: 1.75rem;     */
-        /* margin-bottom: 1.5rem; */
-        margin-left: 4rem;
-        margin-top: 0.8rem;
-    }
-
-    .BG {
-        position: absolute;
-        height: 100%; 
-        width: 100%;
-        pointer-events: none;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25); 
+        font-size: 2.5rem; /* Adjust this value as needed */
+        margin-left: 2rem;
+        margin-top: 0.5rem;
     }
 
     .scanContainer {
-        display: flex;
-        /* align-items: center; */
-        max-width: 90rem;
-        margin: 0 auto;
-        height: 35rem;
-        
-    }
-    
-    .uploadSection {
-        flex: 1;
-        padding: 20px;  
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        margin: 0 auto;
-    }
-    
-    .resultsSection{
-        flex: 1;
-        padding: 20px;
-        text-align: left;
-        color: #000000;
-    }
-    
-    .image-form {
-        display: flex;
         flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #333333;
-        height: 25rem;
-        max-height: 25rem; 
-        max-width: 42.4rem; 
-        cursor: pointer;
-        border-radius: 1rem;
-        position: relative;
-        background-color: cornsilk;
+        height: auto;
+        width: auto;
     }
-    
-    .image-form img {
-        max-width: 100%; 
-        max-height: 100%;  
-        object-fit: cover;
-    }
-    
-    .input-field {
-        display: none;
-    }
-    
-    .upload-placeholder {
-        text-align: center;
-    }
-    
-    .scanContainer button {
-        margin-top: 1rem;
-        color: white;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        height: 2.5rem;
-        border-radius: 12px;
-        font-family: Montserrat-Regular;
-        font-size: 1rem;
-        background-color: green;
 
+    .image-form {
+        height: 20rem; /* Adjust this value as needed */
+        max-height: 20rem;
+        max-width: 100%;
     }
-    
+
+    .scanContainer button {
+        font-size: 0.9rem; /* Adjust this value as needed */
+        height: 2rem;
+    }
+
     .headerStyle {
-        font-family: Montserrat-Bold;
-        font-size: 2rem;
-        color: #000000;
+        font-size: 1.5rem; /* Adjust this value as needed */
     }
-    
+
     .paragraphStyle {
-        font-family: Montserrat-Regular;
-        color: black;
-        font-size: 1rem;
-        text-transform: capitalize;
+        font-size: 0.9rem; /* Adjust this value as needed */
     }
 
     .formParagraph {
-        font-size: 1rem;
-        color: #000000;
+        font-size: 0.9rem; /* Adjust this value as needed */
     }
 
-    .fire-icon {
-        margin-left: 0.5rem; 
+    .resultsSection {
+        padding: 10px;
+        min-height: 100vh;
+        height: auto;
     }
-    
-    .fire-icon-container {
-        display: flex;
-        align-items: center; 
-        justify-content: space-between;
-    }
+}

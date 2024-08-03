@@ -1,126 +1,159 @@
-@font-face {
-    font-family: Montserrat-Bold;
-    src: url(../../../public/fonts/Montserrat-Bold.ttf);
-}
-
-@font-face {
-    font-family: Montserrat-Regular;
-    src: url(../../../public/fonts/Montserrat-Regular.ttf);
-}
-
 body {
-    height: 100vh /*calc(100vh - 2rem)*/;
-    width: 100vw;
-    /* margin:  auto; */
-    /* overflow: hidden; */
-    /* background-size: cover; 
-    background-position: center center; 
-    position: relative; */
-  }
+  height: 100vh;
+  width: 100vw;
+}
 
-  button {
-    border: none;
-    background: none;
-    padding: 0;
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.goBack {
+  margin-left: 68rem;
+  margin-top: 2rem;
+}
+
+.goBack img {
+  height: 15px;
+  width: 30px;
+}
+
+.container_detailed {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 4rem;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header {
+  font-family: Montserrat-Bold;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  margin-left: 4rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #049B04;
+  text-decoration: underline;
+}
+
+.class {
+  color: black;
+  margin-left: 1rem;
+}
+
+.class h2 {
+  font-size: 20px;
+  font-family: Montserrat-Bold;
+}
+
+.class p {
+  font-size: 20px;
+  font-family: Montserrat-Regular;
+}
+
+.image {
+  margin-right: 20px;
+  width: 100%; /* Ensure image fits within container */
+  max-width: 600px; /* Set maximum width */
+  height: auto;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.content p {
+  color: black;
+}
+
+.classification,
+.recommendation,
+.references {
+  margin-bottom: 60px;
+  font-size: 20px;
+  color: #049B04;
+  font-weight: normal;
+  font-family: Montserrat;
+  text-align: left;
+  width: 100%; /* Ensure sections take full width */
+}
+
+/* Media query for portrait mode */
+@media (orientation: portrait) {
+  body {
+      overflow: auto; /* Enable scrolling if content overflows */
   }
 
   .goBack {
-    margin-left: 68rem;
-    margin-top: 2rem;
-  }
-  
-  .goBack img {
-    height: 15px;
-    width: 30px;
+      margin-left: 2rem; /* Adjust margin for smaller screens */
+      margin-top: 1rem;
   }
 
-  button {
-    border: none;
-    background: none;
-    padding: 0;
-  }
-
-  .goBack {
-    margin-left: 68rem;
-    margin-top: 2rem;
-  }
-  
   .goBack img {
-    height: 15px;
-    width: 30px;
+      height: 12px; /* Adjust size for smaller screens */
+      width: 24px;
   }
 
   .container_detailed {
-    border: 2px solid black;
-    border-radius: 8px; 
-    padding: 20px;
-    margin: 4rem;
-    margin-top: 10px;
+      margin: 2rem;
+      padding: 10px;
   }
-  
+
   .header {
-    font-family: Montserrat-Bold;
-    align-items: left;
-    justify-content: left;
-    text-align: left;
-    display: flex;
-    margin-left: 4rem;
-    margin-top:3rem;
-}
-
-  .title {
-    align-items: flex-start;
-  }
-  
-  .header h1 {
-    margin: 0;
-    font-size: 50px;
-    color: #049B04;
-    text-decoration: underline;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 2rem;
+      margin-top: 1rem;
   }
 
-  .class {
-    color: black;
-    margin-left: 1rem;
-    align-items: row;
+  .title h1 {
+      font-size: 30px; /* Adjust font size for portrait */
   }
 
-  .class h2 {
-    font-size: 20px;
-    font-family: Montserrat-Bold;
+  .class h2, .class p {
+      font-size: 16px; /* Adjust font size for portrait */
   }
-  
-  .class p {
-    font-size: 20px;
-    font-family: Montserrat-Regular;
-  }
+
   .image {
-    float: left;
-    margin-right: 20px;
+      margin-right: 0;
+      width: 100%;
+      max-width: none; /* Remove maximum width for portrait */
   }
-  
+
   .image img {
-    height: 400px;  
-    width: 600px;
+      width: 100%;
+      height: auto;
   }
 
   .content {
-    padding: 20px;
-    margin-bottom: 10px;
+      padding: 10px;
   }
-  
+
   .content p {
-    color: black;
+      font-size: 16px; /* Adjust font size for portrait */
   }
-  
-    .classification,
-    .recommendation,
-    .references {
-    margin-bottom: 60px;
-    font-size: 20px;
-    color: #049B04;
-    font-weight: normal;
-    font-family: Montserrat;
-    text-align: left;
-    flex: 1;
-    }
+
+  .classification,
+  .recommendation,
+  .references {
+      font-size: 16px; /* Adjust font size for portrait */
+  }
+}

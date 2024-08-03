@@ -27,9 +27,6 @@ function Intro() {
 
   return (
     <section className='intro' id="intro-section">
-        <section>
-            <img src = {g1_bg} alt = "g1_bg" className='g1_bg'/>
-        </section>
       <div className='introContent'>
         <span className='introLine1'>Worry Less, Grow More:<br /></span>
         <span className='introLine2'>Your Rice Stress Classifier</span>
@@ -40,6 +37,10 @@ function Intro() {
             </button>
         </Link>
       </div>
+        <div className="imageContainer">
+            <img src = {g1_bg} alt = "g1_bg" className='g1_bg'/>
+        </div>
+
       
     </section>
   );

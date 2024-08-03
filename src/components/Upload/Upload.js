@@ -134,11 +134,9 @@ export default function Upload({ addToHistory }) {
 
         <div className="resultsSection">
           <span className='headerStyle'>Classification</span><br />
+          <span className='stressStyle'>{classification.stress_name}</span> <br/>
+          <span className='paragraphStyle'>{classification.stress_desc}</span>
           <div className="fire-icon-container">
-            <span className='paragraphStyle'>
-              <b>{classification.stress_name}</b> <br/>
-              {classification.stress_desc}
-            </span>
             {/* <section className='fireCon'>
               {Array.from({ length: 5 }).map((_, index) => (
                 <FaFire
@@ -152,15 +150,17 @@ export default function Upload({ addToHistory }) {
           </div>
           <br /><br />
           <span className='headerStyle'>Recommendation</span><br />
-          {
-            results.recommendation ? 
-            results.recommendation.split("\n\n").map((line,idx)=>
-              <div key={idx}>
-                <span className='paragraphStyle'>{line}</span><br /><br/>
-              </div>
-            ):
-            <></>
-          }
+          <div className='recommendation'>
+            {
+              results.recommendation ? 
+              results.recommendation.split("\n\n").map((line,idx)=>
+                <div key={idx}>
+                  <span className='paragraphStyle'>{line}</span><br /><br/>
+                </div>
+              ):
+              <></>
+            }
+
 
           <span className='headerStyle'>References</span><br />
           {
@@ -174,6 +174,7 @@ export default function Upload({ addToHistory }) {
               <span className='paragraphStyle'>{results.recommendation_src}</span><br />
             </>
           }
+          </div>
           
         </div>
       </main>

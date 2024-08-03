@@ -1,77 +1,6 @@
-.intro {
-    height: calc(100vh - 2rem);
-    width: 100vw;
-    max-width: 90rem;
-    margin:  auto;
-    overflow: hidden;
-}
-
 @font-face {
     font-family: Montserrat-Bold;
     src: url(../../../public/fonts/Montserrat-Bold.ttf);
-}
-
-.introContent {
-    height: 100vh;
-    width: 100vw;
-    margin-top: 0 auto;
-    padding: 0.5rem;
-    font-size: 3rem;
-    font-family: Montserrat-Bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: -6rem;
-    color: #000;
-}
-
-.h1{
-    font-weight: bold;
-    margin: 0;
-}
-
-/* .intro h1{
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 150px;
-    position: absolute;
-    font-size: 50px;
-    left: 95px;
-}
-
-.h2{
-    font-weight: bold; 
-    margin: 0
-}
-
-.intro h2{
-    font-family: "Montserrat", sans-serif;
-    margin-top: 215px;
-    color: #049B04;
-    font-size: 25px;
-    margin-left: 0;
-} */
-
-.introLine1 {
-    color:green;
-}
-
-.introLine2 {
-    color: black;
-}
-
-@font-face {
-    font-family: Montserrat-Light;
-    src: url(../../../public/fonts/Montserrat-Light.ttf);
-}
-
-.introParagraph {
-    font-size: medium;
-    font-family: Montserrat-Regular;
-    margin: 2rem 0;
-    word-spacing: 0.5rem;
-    max-width: 40rem;
-    text-align: justify;
 }
 
 @font-face {
@@ -79,9 +8,63 @@
     src: url(../../../public/fonts/Montserrat-Regular.ttf);
 }
 
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(../../../public/fonts/Montserrat-Light.ttf);
+}
+
+.intro {
+    height: calc(100vh - 2rem);
+    width: 100vw;
+    max-width: 90rem;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    /* padding: 0 50px; */
+}
+
+.introContent {
+    height: 100%;
+    /* width: 50vw; */
+    margin-top: 0 auto;
+    padding-left: 4rem;
+    font-size: 3rem;
+    font-family: Montserrat-Bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -6rem;
+    color: #000;
+    flex:1 ;
+    /* text-align: center;  */
+}
+
+.h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.introLine1 {
+    color: green;
+}
+
+.introLine2 {
+    color: black;
+}
+
+.introParagraph {
+    font-size: medium;
+    font-family: Montserrat-Regular;
+    /* margin: 2rem auto;  */
+    word-spacing: 0.5rem;
+    max-width: 40rem;
+    text-align: justify;
+}
+
 .introBtn {
     background: green;
-    margin: 1rem 0;
+    /* margin: 1rem auto;  */
     padding: 0.75rem 1rem;
     border: none;
     border-radius: 2rem;
@@ -92,28 +75,66 @@
     max-width: 10rem;
 }
 
-
 .arrowContainer {
-    margin-right: 0.5rem; 
-  }
+    margin-right: 0.5rem;
+}
 
 .arrowBtn {
     object-fit: cover;
     width: 1.2rem;
     height: auto;
-    margin-top: 5px; 
+    margin-top: 5px;
 }
 
-.g1_bg{
-    width: 45%;
-    height: 65%; 
-    position: absolute;
-    right: 80px;
-    bottom: 85px;
+.g1_bg {
+    width:80%;
+    height: 60%;
 }
 
-@media screen and (max-width: 360px) {
-    .parallax img {
-        right: -20vw;
+.imageContainer {
+    padding-left: 3rem;
+    align-content: center;
+    flex:1 ;
+    height:100%;
+}
+
+
+/* Media query for portrait mode */
+@media (orientation: portrait) {
+    .introContent {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+        padding: 1rem;
+        margin-top: 4rem; /* Adjust margin to fit better */
+        flex:0;
     }
-  }
+
+    .introParagraph {
+        font-size: 1rem; /* Adjust font size for readability */
+        margin: 1rem auto;
+        max-width: 90%; /* Adjust max width to fit screen */
+    }
+
+    .introBtn {
+        font-size: 1rem; /* Adjust font size for better button visibility */
+        padding: 0.5rem 1rem;
+        max-width: 80%; /* Adjust max width to fit screen */
+    }
+
+    .g1_bg {
+        width: 80%; /* Adjust background image size */
+        height: auto;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .intro {
+        height: 100vh; /* Ensure full height in portrait mode */
+        overflow: auto; /* Enable scrolling if content overflows */
+        flex-direction: column; 
+    }
+    
+    .imageContainer {
+        flex:0;
+        padding-top: 10vh;
+    }
+}

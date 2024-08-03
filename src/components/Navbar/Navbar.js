@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logopngnew.png';
 import { Link } from 'react-scroll';
@@ -12,12 +12,13 @@ function Navbar() {
   const [userData, setUserData] = useState({});
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [loading, setLoading] = useState(true);
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState(() => {
-    return { userId: localStorage.getItem('userData'), token: localStorage.getItem('token') } || {}
+    return { userId: localStorage.getItem('userData'), token: localStorage.getItem('token') } || {};
   });
+  const [isNavOpen, setIsNavOpen] = useState(false); // State for burger menu
 
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
@@ -35,10 +36,14 @@ function Navbar() {
     alert('This is still under development. To edit your profile, please use the mobile app');
   };
 
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        setLoading(true); // Set loading to true before fetch
+        setLoading(true);
         const response = await fetch('https://softies-backend-production.up.railway.app/api/users/get_user/' + user.userId, {
           method: 'GET',
           headers: {
@@ -46,55 +51,50 @@ function Navbar() {
             'Authorization': "Bearer " + user.token,
           },
         });
-        console.log("RESPONSE STATUS:", response.status); // Log the status code
         if (response.status !== 200) {
-          console.log("AUTH HERE");
           await logout();
           if (!isAuthenticated) {
             navigate('/login');
           }
-          // Handle the error or invalid response
         } else {
           const result = await response.json();
           setUserData(result.data);
         }
       } catch (error) {
-        console.error("ERROR HERE", error);
+        console.error(error);
       } finally {
-        setLoading(false); // Set loading to false after fetch
+        setLoading(false);
       }
     };
-    
     fetchUserData();
-    
-    
   }, [user.userId, user.token, isAuthenticated]);
 
   return (
     <>
       <nav className='navbar'>
         <img src={logo} alt="Logo" className='logo' onClick={() => window.location.href = '/'} />
-        <div className='menu'>
-          <Link to="intro-section" className='menuItem' smooth={true} duration={500} offset={-80}>
+        <div className='burger-menu' onClick={toggleNav}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`nav-links ${isNavOpen ? 'active' : ''}`}>
+          <span><Link to="intro-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
             Home
-          </Link>
-          <Link to="about-section" className='menuItem' smooth={true} duration={500} offset={-80}>
+          </Link></span>
+          <span><Link to="about-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
             About
-          </Link>
-          <Link to="scan-section" className='menuItem' smooth={true} duration={500} offset={-80}>
+          </Link></span>
+          <span><Link to="scan-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
             Scan
-          </Link>
-          <Link to="history-section" className='menuItem' smooth={true} duration={500} offset={-80}>
+          </Link></span>
+          <span><Link to="history-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
             History
-          </Link>
-          <div
-            className="profile-menu"
-            onMouseEnter={toggleProfileDropdown}
-            onMouseLeave={toggleProfileDropdown}
-          >
+          </Link></span>
+          <div className="profile-menu" onMouseEnter={toggleProfileDropdown} onMouseLeave={toggleProfileDropdown}>
             <span className="menuItem">
-              <FontAwesomeIcon icon={faUser} size="lg" className="profile-icon" />
-              {loading ? "Loading..." : `Hi ${userData.username}`} {/* Display loading text or username */}
+              <FontAwesomeIcon icon={faUser} size="base" className="profile-icon" />
+              {loading ? "Loading..." : `Hi ${userData.username}`}
             </span>
             {isProfileDropdownOpen && (
               <div className="profile-dropdown">
@@ -102,10 +102,7 @@ function Navbar() {
                   <RouterLink to="/login" className="dropdown-item profile-text">Login</RouterLink>
                 ) : (
                   <>
-                    <Link
-                      className="dropdown-item profile-text"
-                      onClick={() => setIsModalOpen(true)}
-                    >
+                    <Link className="dropdown-item profile-text" onClick={() => setIsModalOpen(true)}>
                       Edit Profile
                     </Link>
                     <span onClick={handleLogout} className="dropdown-item profile-text">Logout</span>
