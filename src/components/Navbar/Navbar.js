@@ -32,10 +32,6 @@ function Navbar() {
     }
   };
 
-  const showAlert = () => {
-    alert('This is still under development. To edit your profile, please use the mobile app');
-  };
-
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -72,13 +68,13 @@ function Navbar() {
   return (
     <>
       <nav className='navbar'>
-        <img src={logo} alt="Logo" className='logo' onClick={() => window.location.href = '/'} />
+        <img src={logo} alt="Logo" className='logo' onClick={() => navigate('/')} />
         <div className='burger-menu' onClick={toggleNav}>
           <div></div>
           <div></div>
           <div></div>
         </div>
-        <div className={`nav-links ${isNavOpen ? 'active' : ''}`}>
+        <div className={`menu ${isNavOpen ? 'active' : ''}`}>
           <span><Link to="intro-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
             Home
           </Link></span>
@@ -102,9 +98,9 @@ function Navbar() {
                   <RouterLink to="/login" className="dropdown-item profile-text">Login</RouterLink>
                 ) : (
                   <>
-                    <Link className="dropdown-item profile-text" onClick={() => setIsModalOpen(true)}>
+                    <span className="dropdown-item profile-text" onClick={() => setIsModalOpen(true)}>
                       Edit Profile
-                    </Link>
+                    </span>
                     <span onClick={handleLogout} className="dropdown-item profile-text">Logout</span>
                   </>
                 )}
