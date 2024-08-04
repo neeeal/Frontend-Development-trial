@@ -60,7 +60,7 @@ function DetailedHistory() {
     // showAlertHistory();
   }, []);
   return (
-    <div>
+    <div className='container'>
       <div className="header">
         <div className="title">
           <h1>HISTORY</h1>

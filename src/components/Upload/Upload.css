@@ -8,6 +8,11 @@
     src: url(../../../public/fonts/Montserrat-Regular.ttf);
 }
 
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .scan {
     min-height: 100vh;
     width: 100vw;

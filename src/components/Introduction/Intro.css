@@ -13,31 +13,36 @@
     src: url(../../../public/fonts/Montserrat-Light.ttf);
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
 .intro {
-    height: calc(100vh - 2rem);
+    min-height: 100vh;
     width: 100vw;
     max-width: 90rem;
     margin: auto;
     overflow: hidden;
     display: flex;
     align-items: center;
-    /* padding: 0 50px; */
+    justify-content: center;
+    padding: 0 1rem;
+    position: relative;
 }
 
 .introContent {
     height: 100%;
-    /* width: 50vw; */
-    margin-top: 0 auto;
     padding-left: 4rem;
     font-size: 3rem;
     font-family: Montserrat-Bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -6rem;
     color: #000;
-    flex:1 ;
-    /* text-align: center;  */
+    flex: 1;
 }
 
 .h1 {
@@ -56,7 +61,6 @@
 .introParagraph {
     font-size: medium;
     font-family: Montserrat-Regular;
-    /* margin: 2rem auto;  */
     word-spacing: 0.5rem;
     max-width: 40rem;
     text-align: justify;
@@ -64,7 +68,6 @@
 
 .introBtn {
     background: green;
-    /* margin: 1rem auto;  */
     padding: 0.75rem 1rem;
     border: none;
     border-radius: 2rem;
@@ -87,25 +90,33 @@
 }
 
 .g1_bg {
-    width:80%;
+    width: 80%;
     height: 60%;
 }
 
 .imageContainer {
     padding-left: 3rem;
     align-content: center;
-    flex:1 ;
-    height:100%;
+    flex: 1;
+    height: 100%;
 }
-
 
 /* Media query for portrait mode */
 @media (orientation: portrait) {
+    .intro {
+        height: auto;
+        min-height: 100vh; /* Ensure it covers full height */
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
     .introContent {
         font-size: 2rem; /* Adjust font size for smaller screens */
         padding: 1rem;
-        margin-top: 4rem; /* Adjust margin to fit better */
-        flex:0;
+        margin-top: 2rem; /* Adjust margin to fit better */
+        flex: 1;
+        text-align: center;
     }
 
     .introParagraph {
@@ -118,6 +129,7 @@
         font-size: 1rem; /* Adjust font size for better button visibility */
         padding: 0.5rem 1rem;
         max-width: 80%; /* Adjust max width to fit screen */
+        margin: 1rem auto;
     }
 
     .g1_bg {
@@ -125,16 +137,15 @@
         height: auto;
         right: 10px;
         bottom: 10px;
+        margin: 0 auto;
     }
 
-    .intro {
-        height: 100vh; /* Ensure full height in portrait mode */
-        overflow: auto; /* Enable scrolling if content overflows */
-        flex-direction: column; 
-    }
-    
     .imageContainer {
-        flex:0;
-        padding-top: 10vh;
+        flex: 1;
+        padding-bottom: 5vh;
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
