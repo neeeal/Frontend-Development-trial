@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logopngnew.png';
-import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import ProfileModal from '../ProfileModal/ProfileModal';
 
-function Navbar() {
+function Navbar({ scrollToSection }) {
   const [userData, setUserData] = useState({});
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,7 +17,7 @@ function Navbar() {
   const [user, setUser] = useState(() => {
     return { userId: localStorage.getItem('userData'), token: localStorage.getItem('token') } || {};
   });
-  const [isNavOpen, setIsNavOpen] = useState(false); // State for burger menu
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
@@ -34,6 +33,10 @@ function Navbar() {
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+  };
+
+  const closeNav = () => {
+    setIsNavOpen(false);
   };
 
   useEffect(() => {
@@ -57,7 +60,7 @@ function Navbar() {
           setUserData(result.data);
         }
       } catch (error) {
-        console.error(error);
+        console.error("ERROR HERE", error);
       } finally {
         setLoading(false);
       }
@@ -68,37 +71,44 @@ function Navbar() {
   return (
     <>
       <nav className='navbar'>
-        <img src={logo} alt="Logo" className='logo' onClick={() => navigate('/')} />
+        <img src={logo} alt="Logo" className='logo' onClick={() => window.location.href = '/'} />
         <div className='burger-menu' onClick={toggleNav}>
           <div></div>
           <div></div>
           <div></div>
         </div>
         <div className={`menu ${isNavOpen ? 'active' : ''}`}>
-          <span><Link to="intro-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
+          <span className='menuItem' onClick={() => { scrollToSection('intro-section'); closeNav(); }}>
             Home
-          </Link></span>
-          <span><Link to="about-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
+          </span>
+          <span className='menuItem' onClick={() => { scrollToSection('about-section'); closeNav(); }}>
             About
-          </Link></span>
-          <span><Link to="scan-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
+          </span>
+          <span className='menuItem' onClick={() => { scrollToSection('scan-section'); closeNav(); }}>
             Scan
-          </Link></span>
-          <span><Link to="history-section" className='menuItem' smooth={true} duration={500} offset={-80} onClick={toggleNav}>
+          </span>
+          <span className='menuItem' onClick={() => { scrollToSection('history-section'); closeNav(); }}>
             History
-          </Link></span>
-          <div className="profile-menu" onMouseEnter={toggleProfileDropdown} onMouseLeave={toggleProfileDropdown}>
+          </span>
+          <div
+            className="profile-menu"
+            onMouseEnter={toggleProfileDropdown}
+            onMouseLeave={toggleProfileDropdown}
+          >
             <span className="menuItem">
-              <FontAwesomeIcon icon={faUser} size="base" className="profile-icon" />
+              <FontAwesomeIcon icon={faUser} size="lg" className="profile-icon" />
               {loading ? "Loading..." : `Hi ${userData.username}`}
             </span>
             {isProfileDropdownOpen && (
               <div className="profile-dropdown">
                 {!isAuthenticated ? (
-                  <RouterLink to="/login" className="dropdown-item profile-text">Login</RouterLink>
+                  <RouterLink to="/login" className="dropdown-item profile-text" onClick={closeNav}>Login</RouterLink>
                 ) : (
                   <>
-                    <span className="dropdown-item profile-text" onClick={() => setIsModalOpen(true)}>
+                    <span
+                      className="dropdown-item profile-text"
+                      onClick={() => { setIsModalOpen(true); closeNav(); }}
+                    >
                       Edit Profile
                     </span>
                     <span onClick={handleLogout} className="dropdown-item profile-text">Logout</span>

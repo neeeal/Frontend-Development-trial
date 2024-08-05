@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Navbar from "./components/Navbar/Navbar";
 import Intro from "./components/Introduction/Intro";
 import Tutorial from './components/Tutorial/Tutorial';
@@ -15,6 +15,30 @@ function App() {
   const [user, setUser] = useState(() => {
     return {userId:localStorage.getItem('userData'),token:localStorage.getItem('token')}|| {}
   });
+
+  const introRef = useRef(null);
+  const aboutRef = useRef(null);
+  const scanRef = useRef(null);
+  const historyRef = useRef(null);
+
+  const scrollToSection = (section) => {
+    switch (section) {
+      case 'intro-section':
+        introRef.current.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'about-section':
+        aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'scan-section':
+        scanRef.current.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'history-section':
+        historyRef.current.scrollIntoView({ behavior: 'smooth' });
+        break;
+      default:
+        break;
+    }
+  };
 
   const showAlertHistory= () => { // TODO: Remove
     alert('Development... History fetched');
@@ -70,11 +94,19 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
-      <Intro/>
-      <Tutorial/>
-      <Upload addToHistory={addToHistory} />
-      <History history={history} />
+      <Navbar scrollToSection={scrollToSection}/>
+      <section ref={introRef} id="intro-section">
+              <Intro />
+      </section>
+      <section ref={aboutRef} id='about-section'>
+              <Tutorial />
+      </section>
+      <section ref={scanRef} id='scan-section'>
+              <Upload addToHistory={addToHistory}  />
+      </section>
+      <section ref={historyRef} id='history-section'>
+              <History history={history}  />
+      </section>
       {/* <DetailedHistory/> */}
       {/* <LoginSignUp/> */}
     </div>
