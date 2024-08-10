@@ -15,7 +15,7 @@ const LoginSignUp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
-
+  const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -23,8 +23,22 @@ const LoginSignUp = () => {
   const { login, isAuthenticated } = useAuth();
 
   useEffect(() => {
+    // Handle resize
+    const handleResize = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+    
     if (isAuthenticated) {
       navigate('/');
+    }
+
+    // Add the resize event listener
+    window.addEventListener('resize', handleResize);
+
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
     }
   }, [isAuthenticated, navigate]);
 
@@ -147,7 +161,8 @@ const LoginSignUp = () => {
           </div>
         </div>
       )}
-
+    {!isPortrait ? (
+      <>
       {/* Main Content */}
       <div className="form-container sign-up-container">
         <form>
@@ -181,6 +196,7 @@ const LoginSignUp = () => {
             </button>
           </div>
           <button onClick={handleSignUp}>SIGN UP</button>
+          {isPortrait ? <p>Portrait mode</p> : <p>Landscape mode</p>}
         </form>
       </div>
 
@@ -224,6 +240,7 @@ const LoginSignUp = () => {
               outline: "none",
             }}
           onClick={() => setIsModalOpen(true)}>Forgot Password?</button>
+          {isPortrait ? <p>Portrait mode</p> : <p>Landscape mode</p>}
         </form>
       </div>
 
@@ -265,6 +282,116 @@ const LoginSignUp = () => {
           </div>
         </div>
       </div>
+      </>
+    ) : (
+      <>
+      <div className="form-container sign-up-container" style={{transform: addclass ? 'translateX(0%)' : 'translateX(-100%)'}}>
+        <form>
+          <h1>Create Account</h1>
+          <div className="paragraph2">
+            Enter your complete details to register
+          </div>
+          <input type="fName" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
+          <input type="lName" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
+          <input type="contact" placeholder="Contact" onChange={(e) => setContact(e.target.value)}/>
+          <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+          <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
+          <div style={{minWidth:"100%", display: "flex"}}>
+            <input style={{flex: 10}} type={isPasswordVisible ? 'text' : 'password'} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+            <button
+              style={{
+                flex: 1,
+                background: "none",
+                border: "none",
+                padding: 0,
+                margin: 0,
+                cursor: "pointer",
+                outline: "none",
+              }}
+              onClick={(e) => {
+                e.preventDefault(); // Prevent the form submission
+                togglePasswordVisibility();
+              }}
+            >
+              <span style={{color: "black"}}>{isPasswordVisible ? 'Hide' : 'Show'}</span>
+            </button>
+          </div>
+          <button onClick={handleSignUp}>SIGN UP</button>
+          <button type="button" 
+            style={{
+              // flex: 1,
+              color: "black",
+              background: "none",
+              border: "none",
+              padding: '10px 0px',
+              margin: 0,
+              cursor: "pointer",
+              outline: "none",
+            }}
+          onClick={() => setaddclass("")}>Login?</button>
+        </form>
+      </div>
+
+      <div className="form-container sign-in-container" >
+        <form onSubmit={handleLoginClick}>
+          <h1>Login</h1>
+          <div className="paragraph2">
+            Enter your complete details
+          </div>
+          <input type="text" placeholder="Username or Email Address" onChange={(e) => setEmail(e.target.value)}/>
+          <div style={{minWidth:"100%", display: "flex"}}>
+            <input style={{flex: 10}} type={isPasswordVisible ? 'text' : 'password'} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+            <button
+              style={{
+                flex: 1,
+                background: "none",
+                border: "none",
+                padding: 0,
+                margin: 0,
+                cursor: "pointer",
+                outline: "none",
+              }}
+              onClick={(e) => {
+                e.preventDefault(); // Prevent the form submission
+                togglePasswordVisibility();
+              }}
+            >
+              <span style={{color: "black"}}>{isPasswordVisible ? 'Hide' : 'Show'}</span>
+            </button>
+          </div>
+          <button type="submit">LOGIN</button>
+          <button type="button" 
+            style={{
+              // flex: 1,
+              color: "black",
+              background: "none",
+              border: "none",
+              padding: 0,
+              margin: 0,
+              cursor: "pointer",
+              outline: "none",
+            }}
+          onClick={() => setIsModalOpen(true)}>Forgot Password?</button>
+          <button type="button" 
+            style={{
+              // flex: 1,
+              color: "black",
+              background: "none",
+              border: "none",
+              padding: '10px 0px',
+              margin: 0,
+              cursor: "pointer",
+              outline: "none",
+            }}
+          onClick={() => setaddclass("right-panel-active")}>Sign up?</button>
+          {isPortrait ? <p>Portrait mode</p> : <p>Landscape mode</p>}
+        </form>
+      </div>
+      </>
+    )}
+
+
+
     </div>
   );
 };
